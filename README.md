@@ -1,17 +1,23 @@
 # Dotfiles
 
-This repo comes with a handy tool called [dotdrop](https://github.com/deadc0de6/dotdrop). It helps to manage various dotfiles and install them as well.
+This repo comes with a handy tool called [dotdrop](https://github.com/deadc0de6/dotdrop).
+It helps to manage various dotfiles and install them as well.
 
 Here are some handy commands to help get started:
-- Adding files/directories to the repo to be symlinked when installing: `./dotdrop.sh import --link=link <file>`
-- Comparing files in the repo with what's set up in `~` already: `./dotdrop.sh compare [--profile=<profile_name>]`
-- Installing files (see `config.yaml` for profiles - you may need to create one): `./dotdrop.sh install [--profile=<profile_name>]`
+- Adding files/directories to the repo to be symlinked when installing:
+  `./dotdrop.sh import --link=link <file>`
+- Comparing files in the repo with what's set up in `~` already: `./dotdrop.sh
+  compare [--profile=<profile_name>]`
+- Installing files (see `config.yaml` for profiles - you may need to create
+  one): `./dotdrop.sh install [--profile=<profile_name>]`
+
 
 # TODOs
 
 ## Neovim
 
 - Replace augroup defs with nvim api calls when they become available
+- Figure out how to set `g:clipboard`
 - Complete the TODO's in the rest of the file
 - Complete the TODO's in other required nvim files
 - Plugins / Features
