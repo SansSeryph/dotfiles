@@ -11,6 +11,9 @@ Here are some handy commands to help get started:
 - Installing files (see `config.yaml` for profiles - you may need to create
   one): `./dotdrop.sh install [--profile=<profile_name>]`
 
+Additionally, this repo also stores `*_setup` files for quickly getting devices
+going. They start as `.md` files containing instructions but the goal is to
+(slowly) migrate them over to fully automated scripts.
 
 # TODOs
 
