@@ -3,4 +3,52 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  d_fish:
+    src: config/fish
+    dst: ~/.config/fish
+    link: link
+    chmod: '700'
+  d_nvim:
+    src: config/nvim
+    dst: ~/.config/nvim
+    link: link
+  d_kitty:
+    src: config/kitty
+    dst: ~/.config/kitty
+    link: link
+  f_pikaur.conf:
+    src: config/pikaur.conf
+    dst: ~/.config/pikaur.conf
+    link: link
+  f_asdfrc:
+    src: asdfrc
+    dst: ~/.asdfrc
+    link: link
+  f_default-gems:
+    src: default-gems
+    dst: ~/.default-gems
+    link: link
+  f_default-npm-packages:
+    src: default-npm-packages
+    dst: ~/.default-npm-packages
+    link: link
+  f_default-python-packages:
+    src: default-python-packages
+    dst: ~/.default-python-packages
+    link: link
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
+    link: link
 profiles:
+  terra:
+    dotfiles:
+    - d_fish
+    - d_nvim
+    - d_kitty
+    - f_pikaur.conf
+    - f_asdfrc
+    - f_default-gems
+    - f_default-npm-packages
+    - f_default-python-packages
+    - f_tmux.conf
