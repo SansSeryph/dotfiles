@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tree-sitter-c",
     url = "https://github.com/nvim-treesitter/tree-sitter-c"
   },
+  ["tree-sitter-html"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tree-sitter-html",
+    url = "https://github.com/tree-sitter/tree-sitter-html"
+  },
   ["tree-sitter-lua"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tree-sitter-lua",
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/vim",
     url = "https://github.com/dracula/vim"
+  },
+  ["vim-kitty"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/vim-kitty",
+    url = "https://github.com/fladson/vim-kitty"
   }
 }
 

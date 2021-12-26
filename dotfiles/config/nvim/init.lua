@@ -15,7 +15,7 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 
 -- ------------------------------------
--- | Left Column
+-- | Sign Column
 -- ------------------------------------
 
 vim.o.number = true
@@ -73,15 +73,14 @@ vim.g.shortmess = 'aoOtTIF'
 vim.o.wildmode = "longest:full,full"
 vim.o.updatetime = 500
 vim.o.redrawtime = 10000
-
--- TODO: Fix yanking into os clipboard
-vim.o.clipboard = "unnamedplus"
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = '~/.asdf/shims/python3'
 
 -- ############################################################################
 -- # Keymaps
 -- ############################################################################
 
--- Handy helpers
+-- Helpers
 local noremap = { noremap = true }
 local noremap_silent = { noremap = true, silent = true }
 
@@ -118,14 +117,14 @@ vim.api.nvim_set_keymap('', '<C-o>', '<Esc>:tabnext<cr>', noremap)
 vim.api.nvim_set_keymap('', '<C-i>', '<Esc>:tabprevious<cr>', noremap)
 
 -- Closing and quitting
-vim.api.nvim_set_keymap('', '<C-x>', '<Esc>:%bd!<cr>', noremap_silent)
+vim.api.nvim_set_keymap('', '<C-x>', '<Esc>:bd<cr>', noremap_silent)
 vim.api.nvim_set_keymap('', '<C-w>', '<Esc>:tabclose<cr>', noremap_silent)
 vim.api.nvim_set_keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
 
 -- Clear all buffers
 vim.api.nvim_set_keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
 
--- Misc
+-- Clear highlighted search text
 vim.api.nvim_set_keymap('n', '<C-u>', ':nohlsearch<cr>', {})
 
 -- ------------------------------------
@@ -149,7 +148,7 @@ vim.api.nvim_set_keymap('', '<leader>8', '<Esc>:tabnext 8<cr>', noremap)
 vim.api.nvim_set_keymap('', '<leader>9', '<Esc>:tabnext 9<cr>', noremap)
 
 -- v namespace: tools for vim itself
-vim.api.nvim_set_keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
 vim.api.nvim_set_keymap('n', '<leader>vs', ':source ~/.config/nvim/init.lua<cr>', noremap)
 
 -- ############################################################################
@@ -157,7 +156,7 @@ vim.api.nvim_set_keymap('n', '<leader>vs', ':source ~/.config/nvim/init.lua<cr>'
 -- ############################################################################
 
 -- ------------------------------------
--- | Install Packer if needed
+-- | Packer Init
 -- ------------------------------------
 
 local packer_path = '/site/pack/packer/start/packer.nvim'
@@ -177,8 +176,9 @@ packer.init { display = { non_interactive = true, open_cmd = '' } }
 
 -- TODO Move each plugin sets to their own file
 return packer.startup(function(use)
-	-- Packer will manage itself
-	use 'wbthomason/packer.nvim'
+
+  use 'wbthomason/packer.nvim'
+  use 'fladson/vim-kitty'
 
   -- ------------------------------------
   -- | Colorschemes
@@ -195,6 +195,7 @@ return packer.startup(function(use)
   -- TODOs
     -- Spend more time with this plugin and learn how to use it better
     -- Do some more configuring with nvim-tree-docs
+    -- Figure out why the error messages in :checkhealth are appearing
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground', run = ':TSInstall query' }
@@ -206,10 +207,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/tree-sitter-query'
   use 'nvim-treesitter/tree-sitter-c'
 
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = "all",
-    sync_install = false,
-  })
+  require('nvim-treesitter.configs').setup({})
 
   vim.o.foldmethod = 'expr'
   vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -219,12 +217,9 @@ return packer.startup(function(use)
   -- ------------------------------------
   -- TODOs
     -- See if there's a SASS language server (or if cssls can do it)
-    -- Finish installing LSPs from the list
     -- Add eslint's EslintFixAll?
     -- Find a Lua LSP
     -- Look into installing zeta_note
-    -- Investigate to see if Rubocop is available
-    -- Maybe add tailwind?
 
   use 'neovim/nvim-lspconfig'
   local lsp = require('lspconfig')
@@ -264,7 +259,6 @@ return packer.startup(function(use)
     }
   })
 
-  -- Run packer.clean() and then packer.update().
   -- This should stay at the end
   if packer_bootstrap then
     packer.sync()
