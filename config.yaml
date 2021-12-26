@@ -40,6 +40,10 @@ dotfiles:
     src: tmux.conf
     dst: ~/.tmux.conf
     link: link
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+    link: link
 profiles:
   terra:
     dotfiles:
@@ -52,3 +56,4 @@ profiles:
     - f_default-npm-packages
     - f_default-python-packages
     - f_tmux.conf
+    - f_gitconfig
