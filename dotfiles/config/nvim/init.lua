@@ -47,16 +47,7 @@ vim.o.showtabline = 2
 vim.g.autowrite = true
 vim.o.autowriteall = true
 vim.bo.swapfile = false
-vim.api.nvim_exec([[autocmd CursorHold,CursorHoldI * update]], false)
-
--- ------------------------------------
--- | 80 char lines max
--- ------------------------------------
-
--- TODO Figure out how to get wrapping working correctly
--- vim.o.textwidth = 80
--- vim.o.formatoptions = "tcqjan"
--- vim.o.wrap = false
+vim.api.nvim_exec([[autocmd CursorHold,CursorHoldI * silent! update]], false)
 
 -- ------------------------------------
 -- | Misc
@@ -75,6 +66,7 @@ vim.o.updatetime = 500
 vim.o.redrawtime = 10000
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = '~/.asdf/shims/python3'
+vim.o.foldlevelstart = 99
 
 -- ############################################################################
 -- # Keymaps
@@ -171,10 +163,9 @@ end
 local packer = require('packer')
 
 -- I don't like turning this off but it's annoying
--- TODO Perhaps I could modify this to use something like vim-notify?
+-- TODO Perhaps I could modify this to use something like plenary and vim-notify?
 packer.init { display = { non_interactive = true, open_cmd = '' } }
 
--- TODO Move each plugin sets to their own file
 return packer.startup(function(use)
 
   use 'wbthomason/packer.nvim'
@@ -190,12 +181,6 @@ return packer.startup(function(use)
   -- ------------------------------------
   -- | Treesitter
   -- ------------------------------------
-  --
-  -- Neovim does come with it but let's get the latest and the plugins
-  -- TODOs
-    -- Spend more time with this plugin and learn how to use it better
-    -- Do some more configuring with nvim-tree-docs
-    -- Figure out why the error messages in :checkhealth are appearing
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground', run = ':TSInstall query' }
@@ -258,6 +243,19 @@ return packer.startup(function(use)
       }
     }
   })
+
+  -- ------------------------------------
+  -- | Telescope
+  -- ------------------------------------
+
+  use 'kyazdani42/nvim-web-devicons'
+  require('nvim-web-devicons').setup({})
+
+  use 'nvim-lua/plenary.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- This should stay at the end
   if packer_bootstrap then

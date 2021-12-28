@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -104,15 +109,20 @@ _G.packer_plugins = {
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/playground",
     url = "https://github.com/nvim-treesitter/playground"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   ["tree-sitter-c"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tree-sitter-c",
     url = "https://github.com/nvim-treesitter/tree-sitter-c"
-  },
-  ["tree-sitter-html"] = {
-    loaded = true,
-    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tree-sitter-html",
-    url = "https://github.com/tree-sitter/tree-sitter-html"
   },
   ["tree-sitter-lua"] = {
     loaded = true,
