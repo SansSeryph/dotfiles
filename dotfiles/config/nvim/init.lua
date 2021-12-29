@@ -73,75 +73,77 @@ vim.o.foldlevelstart = 99
 -- ############################################################################
 
 -- Helpers
+local keymap = vim.api.nvim_set_keymap
 local noremap = { noremap = true }
 local noremap_silent = { noremap = true, silent = true }
 
 -- Allow gf to create new files if it doesn't exits
-vim.api.nvim_set_keymap('n', 'gf', ':edit <cfile><cr>', {})
+keymap('n', 'gf', ':edit <cfile><cr>', {})
 
 -- Reselect visual selection after indenting
-vim.api.nvim_set_keymap('v', '<', '<gv', noremap)
-vim.api.nvim_set_keymap('v', '>', '>gv', noremap)
+keymap('v', '<', '<gv', noremap)
+keymap('v', '>', '>gv', noremap)
 
 -- Maintain cursor position when yanking visual selection
-vim.api.nvim_set_keymap('v', 'y', 'myy`y', noremap)
-vim.api.nvim_set_keymap('v', 'Y', 'myY`y', noremap)
+keymap('v', 'y', 'myy`y', noremap)
+keymap('v', 'Y', 'myY`y', noremap)
 
 -- Make Y behave like other capital letters
-vim.api.nvim_set_keymap('n', 'Y', 'y$', noremap)
+keymap('n', 'Y', 'y$', noremap)
 
 -- Quickly insert things ot the end of the line
-vim.api.nvim_set_keymap('i', ';;', '<Esc>A;<Esc>', {})
-vim.api.nvim_set_keymap('i', ',,', '<Esc>A,<Esc>', {})
+keymap('i', ';;', '<Esc>A;<Esc>', {})
+keymap('i', ',,', '<Esc>A,<Esc>', {})
 
 -- ------------------------------------
 -- | Ctrl Binds
 -- ------------------------------------
 
 -- Split navigation
-vim.api.nvim_set_keymap('', '<C-h>', '<Esc><C-W>h', noremap)
-vim.api.nvim_set_keymap('', '<C-j>', '<Esc><C-W>j', noremap)
-vim.api.nvim_set_keymap('', '<C-k>', '<Esc><C-W>k', noremap)
-vim.api.nvim_set_keymap('', '<C-l>', '<Esc><C-W>l', noremap)
+keymap('', '<C-h>', '<Esc><C-W>h', noremap)
+keymap('', '<C-j>', '<Esc><C-W>j', noremap)
+keymap('', '<C-k>', '<Esc><C-W>k', noremap)
+keymap('', '<C-l>', '<Esc><C-W>l', noremap)
 
 -- Tab navigation
-vim.api.nvim_set_keymap('', '<C-o>', '<Esc>:tabnext<cr>', noremap)
-vim.api.nvim_set_keymap('', '<C-i>', '<Esc>:tabprevious<cr>', noremap)
+keymap('', '<C-o>', '<Esc>:tabnext<cr>', noremap)
+keymap('', '<C-i>', '<Esc>:tabprevious<cr>', noremap)
 
 -- Closing and quitting
-vim.api.nvim_set_keymap('', '<C-x>', '<Esc>:bd<cr>', noremap_silent)
-vim.api.nvim_set_keymap('', '<C-w>', '<Esc>:tabclose<cr>', noremap_silent)
-vim.api.nvim_set_keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
+keymap('', '<C-x>', '<Esc>:bd<cr>', noremap_silent)
+keymap('', '<C-w>', '<Esc>:tabclose<cr>', noremap_silent)
+keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
 
 -- Clear all buffers
-vim.api.nvim_set_keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
+keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
 
 -- Clear highlighted search text
-vim.api.nvim_set_keymap('n', '<C-u>', ':nohlsearch<cr>', {})
+keymap('n', '<C-u>', ':nohlsearch<cr>', {})
+keymap('i', '<C-u>', '<Esc>:nohlsearch<cr>i', {})
 
 -- ------------------------------------
 -- | Leader Maps
 -- ------------------------------------
 
 -- Set <Space> as leader
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', noremap_silent)
+keymap('', '<Space>', '<Nop>', noremap_silent)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Numbers are for tab navigation
-vim.api.nvim_set_keymap('n', '<leader>1', ':tabnext 1<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>2', ':tabnext 2<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>3', ':tabnext 3<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>4', ':tabnext 4<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>5', ':tabnext 5<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>6', ':tabnext 6<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>7', ':tabnext 7<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>8', ':tabnext 8<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>9', ':tabnext 9<cr>', noremap)
+keymap('n', '<leader>1', ':tabnext 1<cr>', noremap)
+keymap('n', '<leader>2', ':tabnext 2<cr>', noremap)
+keymap('n', '<leader>3', ':tabnext 3<cr>', noremap)
+keymap('n', '<leader>4', ':tabnext 4<cr>', noremap)
+keymap('n', '<leader>5', ':tabnext 5<cr>', noremap)
+keymap('n', '<leader>6', ':tabnext 6<cr>', noremap)
+keymap('n', '<leader>7', ':tabnext 7<cr>', noremap)
+keymap('n', '<leader>8', ':tabnext 8<cr>', noremap)
+keymap('n', '<leader>9', ':tabnext 9<cr>', noremap)
 
 -- v namespace: tools for vim itself
-vim.api.nvim_set_keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
-vim.api.nvim_set_keymap('n', '<leader>vs', ':source ~/.config/nvim/init.lua<cr>', noremap)
+keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
+keymap('n', '<leader>vs', ':source ~/.config/nvim/init.lua<cr>', noremap)
 
 -- ############################################################################
 -- # Plugins
@@ -176,7 +178,7 @@ return packer.startup(function(use)
   -- ------------------------------------
 
   use 'dracula/vim'
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  use { 'catppuccin/nvim', as = 'catppuccin' }
 
   require('catppuccin').setup({
     term_colors = true,
@@ -203,7 +205,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/tree-sitter-query'
   use 'nvim-treesitter/tree-sitter-c'
 
-  require("nvim-treesitter.install").prefer_git = true
+  require('nvim-treesitter.install').prefer_git = true
   require('nvim-treesitter.configs').setup({})
 
   vim.o.foldmethod = 'expr'
@@ -304,16 +306,16 @@ return packer.startup(function(use)
 
   telescope.load_extension('fzf')
 
-  vim.api.nvim_set_keymap('', '<C-f>', '<Esc>:Telescope find_files<cr>', noremap)
-  vim.api.nvim_set_keymap('', '<C-g>', '<Esc>:Telescope live_grep<cr>', noremap)
-  vim.api.nvim_set_keymap('', '<C-S-G>', '<Esc>:Telescope grep_string<cr>', noremap)
-  vim.api.nvim_set_keymap('', '<C-b>', '<Esc>:Telescope buffers<cr>', noremap)
+  keymap('', '<C-f>', '<Esc>:Telescope find_files<cr>', noremap)
+  keymap('', '<C-g>', '<Esc>:Telescope live_grep<cr>', noremap)
+  keymap('', '<C-S-G>', '<Esc>:Telescope grep_string<cr>', noremap)
+  keymap('', '<C-b>', '<Esc>:Telescope buffers<cr>', noremap)
 
-  vim.api.nvim_set_keymap('n', 'gd', ':Telescope lsp_definitions<cr>', {})
+  keymap('n', 'gd', ':Telescope lsp_definitions<cr>', {})
 
   -- t namespace: Telescope
-  vim.api.nvim_set_keymap('n', '<leader>tt', ':Telescope tags<cr>', noremap)
-  vim.api.nvim_set_keymap('n', '<leader>th', ':Telescope help_tags<cr>', noremap)
+  keymap('n', '<leader>tt', ':Telescope tags<cr>', noremap)
+  keymap('n', '<leader>th', ':Telescope help_tags<cr>', noremap)
 
   -- This should stay at the end
   if packer_bootstrap then
