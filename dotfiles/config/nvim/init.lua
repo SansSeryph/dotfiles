@@ -110,8 +110,8 @@ keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
 keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
 
 -- Clear highlighted search text
-keymap('n', '<C-o>', ':nohlsearch<cr>', silent)
-keymap('i', '<C-o>', '<Esc>:nohlsearch<cr>i', silent)
+keymap('n', '<C-u>', ':nohlsearch<cr>', silent)
+keymap('i', '<C-u>', '<Esc>:nohlsearch<cr>i', silent)
 
 -- ------------------------------------
 -- | Leader Maps
@@ -340,31 +340,35 @@ return packer.startup(function(use)
   })
 
   -- ------------------------------------
-  -- | Bufferline
+  -- | Tabline Framework
   -- ------------------------------------
 
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-  require("bufferline").setup{
-    options = {
-      numbers = function(opts) return opts.ordinal end,
-      show_buffer_close_icons = false,
-      show_close_icon = false,
-      separator_style = 'slant'
-    }
+  use {
+    'rafcamlet/tabline-framework.nvim',
+    requires = 'kyazdani42/nvim-web-devicons'
   }
 
-  keymap('', '<C-i>', '<Esc>:BufferLineCycleNext<cr>', silent)
-  keymap('', '<C-u>', '<Esc>:BufferLineCyclePrev<cr>', silent)
+  require('tabline_framework').setup({
+    render = function(f)
+      f.make_tabs(function(info)
+        f.add(' ' .. info.index .. ' ')
 
-  keymap('n', '<leader>1', ':BufferLineGoToBuffer 1<cr>', silent)
-  keymap('n', '<leader>2', ':BufferLineGoToBuffer 2<cr>', silent)
-  keymap('n', '<leader>3', ':BufferLineGoToBuffer 3<cr>', silent)
-  keymap('n', '<leader>4', ':BufferLineGoToBuffer 4<cr>', silent)
-  keymap('n', '<leader>5', ':BufferLineGoToBuffer 5<cr>', silent)
-  keymap('n', '<leader>6', ':BufferLineGoToBuffer 6<cr>', silent)
-  keymap('n', '<leader>7', ':BufferLineGoToBuffer 7<cr>', silent)
-  keymap('n', '<leader>8', ':BufferLineGoToBuffer 8<cr>', silent)
-  keymap('n', '<leader>9', ':BufferLineGoToBuffer 9<cr>', silent)
+        f.add(info.filename or '[-]')
+        f.add(' ')
+      end)
+
+      f.add_spacer()
+
+        -- get some info from lsp
+        local errors = vim.lsp.diagnostic.get_count(0, 'Error')
+        local warnings = vim.lsp.diagnostic.get_count(0, 'Warning')
+
+        -- and display it
+        f.add { '  ' .. errors, fg = "#e86671" }
+        f.add { '  ' .. warnings, fg = "#e5c07b"}
+        f.add ' '
+    end,
+  })
 
   -- This should stay at the end
   if packer_bootstrap then

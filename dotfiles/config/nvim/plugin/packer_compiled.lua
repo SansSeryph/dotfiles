@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   catppuccin = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -128,6 +123,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["tabline-framework.nvim"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tabline-framework.nvim",
+    url = "https://github.com/rafcamlet/tabline-framework.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
