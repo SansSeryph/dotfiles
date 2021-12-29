@@ -44,6 +44,9 @@ dotfiles:
     src: gitconfig
     dst: ~/.gitconfig
     link: link
+  f_dynamic_wallpapers.xml:
+    src: Documents/dynamic_wallpapers.xml
+    dst: ~/Documents/dynamic_wallpapers.xml
 profiles:
   terra:
     dotfiles:
@@ -57,3 +60,4 @@ profiles:
     - f_default-python-packages
     - f_tmux.conf
     - f_gitconfig
+    - f_dynamic_wallpapers.xml
