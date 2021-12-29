@@ -32,15 +32,6 @@ vim.o.tagcase = "followscs"
 vim.o.incsearch = true
 
 -- ------------------------------------
--- | Tabs
--- ------------------------------------
-
-vim.o.showtabline = 2
--- TODO Figure out what needs to go here
--- I just want something like: <page_num> | <last_focused_file_name>
--- vim.o.tabline = ???
-
--- ------------------------------------
 -- | Automatically save files
 -- ------------------------------------
 
@@ -76,6 +67,7 @@ vim.o.foldlevelstart = 99
 local keymap = vim.api.nvim_set_keymap
 local noremap = { noremap = true }
 local noremap_silent = { noremap = true, silent = true }
+local silent = { silent = true }
 
 -- Allow gf to create new files if it doesn't exits
 keymap('n', 'gf', ':edit <cfile><cr>', {})
@@ -118,8 +110,8 @@ keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
 keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
 
 -- Clear highlighted search text
-keymap('n', '<C-u>', ':nohlsearch<cr>', {})
-keymap('i', '<C-u>', '<Esc>:nohlsearch<cr>i', {})
+keymap('n', '<C-o>', ':nohlsearch<cr>', silent)
+keymap('i', '<C-o>', '<Esc>:nohlsearch<cr>i', silent)
 
 -- ------------------------------------
 -- | Leader Maps
@@ -130,16 +122,17 @@ keymap('', '<Space>', '<Nop>', noremap_silent)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Numbers are for tab navigation
-keymap('n', '<leader>1', ':tabnext 1<cr>', noremap)
-keymap('n', '<leader>2', ':tabnext 2<cr>', noremap)
-keymap('n', '<leader>3', ':tabnext 3<cr>', noremap)
-keymap('n', '<leader>4', ':tabnext 4<cr>', noremap)
-keymap('n', '<leader>5', ':tabnext 5<cr>', noremap)
-keymap('n', '<leader>6', ':tabnext 6<cr>', noremap)
-keymap('n', '<leader>7', ':tabnext 7<cr>', noremap)
-keymap('n', '<leader>8', ':tabnext 8<cr>', noremap)
-keymap('n', '<leader>9', ':tabnext 9<cr>', noremap)
+-- Numbers are for tab navigation though these will get overwritten if
+-- Bufferline is enabled
+keymap('n', '<leader>1', ':tabnext 1<cr>', {})
+keymap('n', '<leader>2', ':tabnext 2<cr>', {})
+keymap('n', '<leader>3', ':tabnext 3<cr>', {})
+keymap('n', '<leader>4', ':tabnext 4<cr>', {})
+keymap('n', '<leader>5', ':tabnext 5<cr>', {})
+keymap('n', '<leader>6', ':tabnext 6<cr>', {})
+keymap('n', '<leader>7', ':tabnext 7<cr>', {})
+keymap('n', '<leader>8', ':tabnext 8<cr>', {})
+keymap('n', '<leader>9', ':tabnext 9<cr>', {})
 
 -- v namespace: tools for vim itself
 keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
@@ -316,6 +309,62 @@ return packer.startup(function(use)
   -- t namespace: Telescope
   keymap('n', '<leader>tt', ':Telescope tags<cr>', noremap)
   keymap('n', '<leader>th', ':Telescope help_tags<cr>', noremap)
+
+  -- ------------------------------------
+  -- | Lualine
+  -- ------------------------------------
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
+  require('lualine').setup({
+    options = {
+      theme = 'catppuccin',
+      component_separators = '|',
+      section_separators = { left = '', right = '' },
+    },
+    sections = {
+      lualine_a = {
+        { 'mode', separator = { left = '' }, right_padding = 2 },
+      },
+      lualine_b = { 'filename', 'branch' },
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = { 'filetype', 'progress' },
+      lualine_z = {
+        { 'location', separator = { right = '' }, left_padding = 2 },
+      },
+    },
+  })
+
+  -- ------------------------------------
+  -- | Bufferline
+  -- ------------------------------------
+
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  require("bufferline").setup{
+    options = {
+      numbers = function(opts) return opts.ordinal end,
+      show_buffer_close_icons = false,
+      show_close_icon = false,
+      separator_style = 'slant'
+    }
+  }
+
+  keymap('', '<C-i>', '<Esc>:BufferLineCycleNext<cr>', silent)
+  keymap('', '<C-u>', '<Esc>:BufferLineCyclePrev<cr>', silent)
+
+  keymap('n', '<leader>1', ':BufferLineGoToBuffer 1<cr>', silent)
+  keymap('n', '<leader>2', ':BufferLineGoToBuffer 2<cr>', silent)
+  keymap('n', '<leader>3', ':BufferLineGoToBuffer 3<cr>', silent)
+  keymap('n', '<leader>4', ':BufferLineGoToBuffer 4<cr>', silent)
+  keymap('n', '<leader>5', ':BufferLineGoToBuffer 5<cr>', silent)
+  keymap('n', '<leader>6', ':BufferLineGoToBuffer 6<cr>', silent)
+  keymap('n', '<leader>7', ':BufferLineGoToBuffer 7<cr>', silent)
+  keymap('n', '<leader>8', ':BufferLineGoToBuffer 8<cr>', silent)
+  keymap('n', '<leader>9', ':BufferLineGoToBuffer 9<cr>', silent)
 
   -- This should stay at the end
   if packer_bootstrap then
