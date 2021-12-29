@@ -7,6 +7,7 @@ These configs have the following features:
 - Leader keymaps are namespaced
 - TODOs sprinkled around in `init.lua`
 - Plugin management with [packer.nvim](https://github.com/wbthomason/packer.nvim)
+- Fuzzy Finding with Telescope
 
 ## TODOs
 

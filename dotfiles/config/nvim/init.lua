@@ -259,6 +259,8 @@ return packer.startup(function(use)
   -- | Telescope
   -- ------------------------------------
 
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
   use 'kyazdani42/nvim-web-devicons'
   require('nvim-web-devicons').setup({})
 
@@ -267,6 +269,50 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  local telescope = require('telescope')
+
+  telescope.setup({
+    defaults = {
+      layout = 'horizontal',
+      layout_config = {
+        anchor = 'CENTER',
+        height = 0.9,
+        width = 0.9,
+      },
+      prompt_prefix = '🔎 ',
+      selection_caret = '➤ ',
+      mappings = {
+        n = {
+          ['<C-n>'] = false,
+          ['<C-p>'] = false,
+        },
+        i = {
+          ['<C-n>'] = false,
+          ['<C-p>'] = false,
+          ['<C-j>'] = 'move_selection_next',
+          ['<C-k>'] = 'move_selection_previous',
+          ['<C-S-J>'] = 'move_to_bottom',
+          ['<C-S-K>'] = 'move_to_top',
+          ['<C-a>'] = 'toggle_all',
+          ['<ESC>'] = 'close',
+        },
+      },
+    },
+  })
+
+  telescope.load_extension('fzf')
+
+  vim.api.nvim_set_keymap('', '<C-f>', '<Esc>:Telescope find_files<cr>', noremap)
+  vim.api.nvim_set_keymap('', '<C-g>', '<Esc>:Telescope live_grep<cr>', noremap)
+  vim.api.nvim_set_keymap('', '<C-S-G>', '<Esc>:Telescope grep_string<cr>', noremap)
+  vim.api.nvim_set_keymap('', '<C-b>', '<Esc>:Telescope buffers<cr>', noremap)
+
+  vim.api.nvim_set_keymap('n', 'gd', ':Telescope lsp_definitions<cr>', {})
+
+  -- t namespace: Telescope
+  vim.api.nvim_set_keymap('n', '<leader>tt', ':Telescope tags<cr>', noremap)
+  vim.api.nvim_set_keymap('n', '<leader>th', ':Telescope help_tags<cr>', noremap)
 
   -- This should stay at the end
   if packer_bootstrap then
