@@ -24,7 +24,7 @@ These configs have the following features:
 - Treesitter
   - See if there are any handy tools I can use with this plugin
   - Read nvim-tree-docs
-  - Figure out why the error messages in :checkhealth are appearing
+  - Figure out why the error messages in `:checkhealth lspconfig` are appearing
 
 - Markdown features that I'd like:
   - Formats/Prettifies on save

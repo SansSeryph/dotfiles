@@ -77,7 +77,7 @@ local noremap = { noremap = true }
 local noremap_silent = { noremap = true, silent = true }
 
 -- Allow gf to create new files if it doesn't exits
-vim.api.nvim_set_keymap('', 'gf', ':edit <cfile><cr>', {})
+vim.api.nvim_set_keymap('n', 'gf', ':edit <cfile><cr>', {})
 
 -- Reselect visual selection after indenting
 vim.api.nvim_set_keymap('v', '<', '<gv', noremap)
@@ -129,15 +129,15 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Numbers are for tab navigation
-vim.api.nvim_set_keymap('', '<leader>1', '<Esc>:tabnext 1<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>2', '<Esc>:tabnext 2<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>3', '<Esc>:tabnext 3<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>4', '<Esc>:tabnext 4<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>5', '<Esc>:tabnext 5<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>6', '<Esc>:tabnext 6<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>7', '<Esc>:tabnext 7<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>8', '<Esc>:tabnext 8<cr>', noremap)
-vim.api.nvim_set_keymap('', '<leader>9', '<Esc>:tabnext 9<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>1', ':tabnext 1<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>2', ':tabnext 2<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>3', ':tabnext 3<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>4', ':tabnext 4<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>5', ':tabnext 5<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>6', ':tabnext 6<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>7', ':tabnext 7<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>8', ':tabnext 8<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<leader>9', ':tabnext 9<cr>', noremap)
 
 -- v namespace: tools for vim itself
 vim.api.nvim_set_keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
@@ -203,6 +203,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/tree-sitter-query'
   use 'nvim-treesitter/tree-sitter-c'
 
+  require("nvim-treesitter.install").prefer_git = true
   require('nvim-treesitter.configs').setup({})
 
   vim.o.foldmethod = 'expr'
