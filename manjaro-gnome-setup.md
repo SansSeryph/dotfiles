@@ -79,24 +79,6 @@ curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install 
 omf install https://github.com/catppuccin/fish
 ```
 
-Patch Fira to have the full nerd fonts icons. I'm going this route instead of
-installing the patched font directly because it doesn't come with font features
-needed for kitty to display certain characters.
-
-```
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts ~/Workspace/nerd-fonts
-
-mkdir -p ~/.local/share/fonts
-chmod 755 ~/.local/share/fonts/
-
-fontforge -script ~/Workspace/nerd-fonts/font-patcher --complete --careful \
-  --progress-bar /usr/share/fonts/TTF/FiraCode-Regular.ttf
-chmod 444 Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf
-mv Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf ~/.local/share/fonts/
-
-fc-cache
-```
-
 ## Tmux
 
 ```
