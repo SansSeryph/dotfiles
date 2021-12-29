@@ -45,7 +45,7 @@ pikaur --remove --recursive --noconfirm firefox-theme-gnome-maia
 pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop steam-manjaro keybase keybase-gui tmux   \
 	keepassxc betterdiscord-installer betterdiscordctl discord fish kitty htop   \
-	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js fd fontforge
+	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js fd tree
 ```
 
 ## Dotfiles
