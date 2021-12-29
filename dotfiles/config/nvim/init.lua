@@ -230,7 +230,6 @@ return packer.startup(function(use)
   lsp.typeprof.setup({})
   lsp.vimls.setup({})
   lsp.volar.setup({})
-  lsp.vls.setup({})
   lsp.yamlls.setup({})
 
   -- HTML / CSS / JSON
