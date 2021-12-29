@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  catppuccin = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["completion-treesitter"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/completion-treesitter",

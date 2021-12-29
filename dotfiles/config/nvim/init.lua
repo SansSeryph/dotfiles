@@ -176,7 +176,18 @@ return packer.startup(function(use)
   -- ------------------------------------
 
   use 'dracula/vim'
-  vim.api.colorscheme = 'dracula'
+  use({ "catppuccin/nvim", as = "catppuccin" })
+
+  require('catppuccin').setup({
+    term_colors = true,
+    integrations = {
+      treesitter = true,
+      telescope = true,
+      markdown = true,
+    },
+  })
+
+  vim.cmd[[colorscheme catppuccin]]
 
   -- ------------------------------------
   -- | Treesitter

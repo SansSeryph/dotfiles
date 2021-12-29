@@ -74,6 +74,9 @@ set --universal --export EDITOR (which nvim)
 
 set --erase VISUAL
 set --universal --export VISUAL (which nvim)
+
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+omf install https://github.com/catppuccin/fish
 ```
 
 Patch Fira to have the full nerd fonts icons. I'm going this route instead of
@@ -157,6 +160,17 @@ asdf reshim perl latest
 
 TODO: Install Better Discord
 
+# Gnome
+
+Get some wallpapers
+
+```
+git clone https://github.com/catppuccin/wallpapers Pictures/Wallpapers/catppuccin
+```
+
+TODO: Find a way to load `~/Documents/dynamic_wallpapers.xml` into Dynamic Wallpaper Editor from 
+CLI
+
 ## Final Steps
 
 - Log into accounts:
@@ -169,6 +183,11 @@ TODO: Install Better Discord
 	- Keybase
 - Make sure keybase auto-starts on OS start
 - Create an SSH key 
+- Set the DuckDuckGo Theme to be Catppuccin:
+  1. Visit https://duckduckgo.com/settings
+  2. Go to Cloud Save > Load Settings.
+  3. Enter `catppuccin-ddg` as passphrase.
+  4. Click on `Load` button.
 
 # TODOs
 

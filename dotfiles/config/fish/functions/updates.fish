@@ -12,4 +12,7 @@ function updates
     | grep -v '^\-e' \
     | cut -d = -f 1 \
     | xargs -n1 pip install --upgrade --progress-bar pretty
+
+  nvim +PackerSync +q
+  omf update
 end
