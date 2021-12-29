@@ -1,5 +1,9 @@
 # Neovim Configs
 
+## Requirements
+
+- [Neovim](https://neovim.io/) version 0.6 or later
+
 ## Background
 
 These configs have the following features:
@@ -8,6 +12,7 @@ These configs have the following features:
 - TODOs sprinkled around in `init.lua`
 - Plugin management with [packer.nvim](https://github.com/wbthomason/packer.nvim)
 - Fuzzy Finding with Telescope
+- Leader key set up to <Space>
 
 ## TODOs
 
@@ -16,6 +21,8 @@ These configs have the following features:
 - Figure out how to set `g:clipboard` (can't just put `"unamedplus"` there)
 - Something with 80 chars per line
 - Move each plugin set to live in their own file
+- Add pics/gifs to README
+- Add customized keymaps to README
 
 - Read these help files:
   - shada
