@@ -124,15 +124,15 @@ vim.g.maplocalleader = " "
 
 -- Numbers are for tab navigation though these will get overwritten if
 -- Bufferline is enabled
-keymap('n', '<leader>1', ':tabnext 1<cr>', {})
-keymap('n', '<leader>2', ':tabnext 2<cr>', {})
-keymap('n', '<leader>3', ':tabnext 3<cr>', {})
-keymap('n', '<leader>4', ':tabnext 4<cr>', {})
-keymap('n', '<leader>5', ':tabnext 5<cr>', {})
-keymap('n', '<leader>6', ':tabnext 6<cr>', {})
-keymap('n', '<leader>7', ':tabnext 7<cr>', {})
-keymap('n', '<leader>8', ':tabnext 8<cr>', {})
-keymap('n', '<leader>9', ':tabnext 9<cr>', {})
+keymap('n', '<leader>1', ':tabnext 1<cr>', silent)
+keymap('n', '<leader>2', ':tabnext 2<cr>', silent)
+keymap('n', '<leader>3', ':tabnext 3<cr>', silent)
+keymap('n', '<leader>4', ':tabnext 4<cr>', silent)
+keymap('n', '<leader>5', ':tabnext 5<cr>', silent)
+keymap('n', '<leader>6', ':tabnext 6<cr>', silent)
+keymap('n', '<leader>7', ':tabnext 7<cr>', silent)
+keymap('n', '<leader>8', ':tabnext 8<cr>', silent)
+keymap('n', '<leader>9', ':tabnext 9<cr>', silent)
 
 -- v namespace: tools for vim itself
 keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
