@@ -45,7 +45,8 @@ pikaur --remove --recursive --noconfirm firefox-theme-gnome-maia
 pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop steam-manjaro keybase keybase-gui tmux   \
 	keepassxc betterdiscord-installer betterdiscordctl discord fish kitty htop   \
-	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js-git fd tree
+	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js-git fd tree  \
+  github-cli ctags
 ```
 
 ## Dotfiles
@@ -112,6 +113,7 @@ asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf install ruby latest
 asdf global ruby latest
 asdf reshim ruby latest
+gem ctags
 ```
 
 ### Python
