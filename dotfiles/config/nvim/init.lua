@@ -102,9 +102,9 @@ keymap('', '<C-o>', '<Esc>:tabnext<cr>', noremap)
 keymap('', '<C-i>', '<Esc>:tabprevious<cr>', noremap)
 
 -- Closing and quitting
-keymap('', '<C-x>', '<Esc>:bd<cr>', noremap_silent)
-keymap('', '<C-w>', '<Esc>:tabclose<cr>', noremap_silent)
-keymap('', '<C-q>', '<Esc>:q<cr>', noremap_silent)
+keymap('', '<C-x>', '<Esc>:bd<cr>', silent)
+keymap('', '<C-w>', '<Esc>:tabclose<cr>', silent)
+keymap('', '<C-q>', '<Esc>:q<cr>', silent)
 
 -- Clear all buffers
 keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
@@ -122,8 +122,7 @@ keymap('', '<Space>', '<Nop>', noremap_silent)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Numbers are for tab navigation though these will get overwritten if
--- Bufferline is enabled
+-- Numbers are for tab navigation
 keymap('n', '<leader>1', ':tabnext 1<cr>', silent)
 keymap('n', '<leader>2', ':tabnext 2<cr>', silent)
 keymap('n', '<leader>3', ':tabnext 3<cr>', silent)
@@ -150,19 +149,15 @@ local packer_path = '/site/pack/packer/start/packer.nvim'
 local install_path = vim.fn.stdpath('data')..packer_path
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	local packer_repo_url = 'https://github.com/wbthomason/packer.nvim'
-	local args = { 'git', 'clone', '--depth', '1', packer_repo_url, install_path }
+  local packer_repo_url = 'https://github.com/wbthomason/packer.nvim'
+  local args = { 'git', 'clone', '--depth', '1', packer_repo_url, install_path }
   packer_bootstrap = vim.fn.system(args)
 end
 
 local packer = require('packer')
-
--- I don't like turning this off but it's annoying
--- TODO Perhaps I could modify this to use something like plenary and vim-notify?
 packer.init { display = { non_interactive = true, open_cmd = '' } }
 
 return packer.startup(function(use)
-
   use 'wbthomason/packer.nvim'
   use 'fladson/vim-kitty'
 
@@ -207,35 +202,98 @@ return packer.startup(function(use)
   -- ------------------------------------
   -- | Language Servers
   -- ------------------------------------
-  -- TODOs
-    -- See if there's a SASS language server (or if cssls can do it)
-    -- Add eslint's EslintFixAll?
-    -- Find a Lua LSP
-    -- Look into installing zeta_note
 
   use 'neovim/nvim-lspconfig'
   local lsp = require('lspconfig')
 
-  -- LSPs that require no special setup
-  lsp.ansiblels.setup({})
-  lsp.bashls.setup({})
-  lsp.cssmodules_ls.setup({})
-  lsp.diagnosticls.setup({})
-  lsp.dockerls.setup({})
-  lsp.eslint.setup({})
-  lsp.quick_lint_js.setup({})
-  lsp.solargraph.setup({})
-  lsp.sqlls.setup({})
-  lsp.tsserver.setup({})
-  lsp.typeprof.setup({})
-  lsp.vimls.setup({})
-  lsp.volar.setup({})
-  lsp.yamlls.setup({})
+  -- StyleLint
+  lsp.stylelint_lsp.setup({
+    settings = {
+      stylelintplus = {
+        autoFixOnSave = true,
+        cssInJs = true,
+      }
+    }
+  })
 
-  -- HTML / CSS / JSON
+  -- ------------------------------------
+  -- | Completions
+  -- ------------------------------------
+
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'nvim-lspconfig',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'quangnguyen30192/cmp-nvim-tags',
+      'ray-x/cmp-treesitter',
+      'kristijanhusak/vim-dadbod-completion',
+      { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+      { "mtoohey31/cmp-fish", ft = "fish" },
+    },
+  }
+
+  vim.o.completeopt = 'menu,menuone,noselect'
+
+  local cmp = require('cmp')
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'fish' },
+      { name = 'tags' },
+      { name = 'treesitter' },
+      { name = 'cmp_git' },
+      { name = 'vim-dadbod-completion' },
+    })
+  })
+
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+  lsp.ansiblels.setup({ capabilities = capabilities })
+  lsp.bashls.setup({ capabilities = capabilities })
+  lsp.cssmodules_ls.setup({ capabilities = capabilities })
+  lsp.diagnosticls.setup({ capabilities = capabilities })
+  lsp.dockerls.setup({ capabilities = capabilities })
+  lsp.eslint.setup({ capabilities = capabilities })
+  lsp.quick_lint_js.setup({ capabilities = capabilities })
+  lsp.solargraph.setup({ capabilities = capabilities })
+  lsp.sqlls.setup({ capabilities = capabilities })
+  lsp.tsserver.setup({ capabilities = capabilities })
+  lsp.typeprof.setup({ capabilities = capabilities })
+  lsp.vimls.setup({ capabilities = capabilities })
+  lsp.volar.setup({ capabilities = capabilities })
+  lsp.yamlls.setup({ capabilities = capabilities })
+  lsp.cssls.setup { capabilities = capabilities }
+  lsp.html.setup { capabilities = capabilities }
+  lsp.jsonls.setup { capabilities = capabilities }
   lsp.cssls.setup { capabilities = capabilities }
   lsp.html.setup { capabilities = capabilities }
   lsp.jsonls.setup { capabilities = capabilities }
@@ -368,6 +426,99 @@ return packer.startup(function(use)
       f.add ' '
     end,
   })
+
+  -- ------------------------------------
+  -- | TPope
+  -- ------------------------------------
+
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-dispatch'
+  use 'tpope/vim-rake'
+  use 'tpope/vim-bundler'
+  use 'tpope/vim-rails'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-unimpaired'
+  use 'tpope/vim-ragtag'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-endwise'
+  use 'tpope/vim-apathy'
+  use 'tpope/vim-rhubarb'
+
+  keymap('n', '<leader>g', ':Git<cr>', silent)
+
+  -- ------------------------------------
+  -- | Autopairs
+  -- ------------------------------------
+
+  use 'windwp/nvim-autopairs'
+  require('nvim-autopairs').setup({})
+
+  -- ------------------------------------
+  -- | Comments
+  -- ------------------------------------
+
+  use 'numToStr/Comment.nvim'
+  require('Comment').setup()
+
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  require'nvim-treesitter.configs'.setup {
+    context_commentstring = {
+      enable = true
+    }
+  }
+
+  -- ------------------------------------
+  -- | Gitsigns
+  -- ------------------------------------
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
+  require('gitsigns').setup()
+
+  -- ------------------------------------
+  -- | Colors
+  -- ------------------------------------
+
+  use 'norcalli/nvim-colorizer.lua'
+  require'colorizer'.setup()
+
+  -- ------------------------------------
+  -- | Buffer Management
+  -- ------------------------------------
+
+  use 'phongnh/vim-sayonara'
+
+  keymap('', '<C-x>', '<Esc>:Sayonara<cr>', silent)
+  keymap('', '<C-w>', '<Esc>:Sayonara!<cr>', silent)
+
+  -- ------------------------------------
+  -- | Trouble
+  -- ------------------------------------
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  }
+  require("trouble").setup({})
+
+  -- x namespace: tools for vim itself
+  keymap('', '<c-e>', ':TroubleToggle<cr>', silent)
+
+  -- ------------------------------------
+  -- | Language Helpers
+  -- ------------------------------------
+
+  use 'vim-ruby/vim-ruby'
+
+  use { 'windwp/nvim-ts-autotag' }
+  require'nvim-treesitter.configs'.setup {
+   autotag = {
+      enable = true,
+      filetypes = { "html" , "xml" },
+    }
+  }
 
   -- This should stay at the end
   if packer_bootstrap then

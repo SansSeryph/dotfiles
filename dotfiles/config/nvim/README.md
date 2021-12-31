@@ -16,13 +16,18 @@ These configs have the following features:
 
 ## TODOs
 
-- Complete TODO's in `init.lua`
 - Replace augroup defs with nvim api calls when they become available
 - Figure out how to set `g:clipboard` (can't just put `"unamedplus"` there)
 - Something with 80 chars per line
 - Move each plugin set to live in their own file
 - Add pics/gifs to README
 - Add customized keymaps to README
+
+- LSPs
+  - Make sure there's a SASS LSP (cssls might be able to)
+  - Look into fixers
+  - Install one for Lua
+  - Add Zeta Note LSP?
 
 - Read these help files:
   - shada
