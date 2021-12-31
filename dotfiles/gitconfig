@@ -4,6 +4,8 @@
 	name = SansSeryph
 	email = sansseryph@gmail.com
 [core]
-	pager = nvim -R
+	pager = nvim +Man!
 [color]
 	pager = no
+[pull]
+	rebase = true
