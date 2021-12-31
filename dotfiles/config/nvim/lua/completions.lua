@@ -60,6 +60,8 @@ function M.configure(use)
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+  -- For list of available LSPs:
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   lsp.ansiblels.setup({ capabilities = capabilities })
   lsp.bashls.setup({ capabilities = capabilities })
   lsp.cssmodules_ls.setup({ capabilities = capabilities })
