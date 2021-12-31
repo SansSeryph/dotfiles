@@ -71,10 +71,12 @@ chsh --shell /usr/bin/fish $(whoami)
 fish
 
 set --erase EDITOR
-set --universal --export EDITOR (which nvim)
-
 set --erase VISUAL
+
+set --universal --export EDITOR (which nvim)
 set --universal --export VISUAL (which nvim)
+set --universal --export PAGER "nvim -R"
+set --universal --export MANPAGER "nvim +Man!"
 
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 omf install https://github.com/catppuccin/fish
