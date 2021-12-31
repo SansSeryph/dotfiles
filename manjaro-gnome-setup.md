@@ -77,6 +77,7 @@ set --universal --export EDITOR (which nvim)
 set --universal --export VISUAL (which nvim)
 set --universal --export PAGER "nvim -R"
 set --universal --export MANPAGER "nvim +Man!"
+set --universal --export WAYLAND_DISPLAY wayland-0
 
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 omf install https://github.com/catppuccin/fish

@@ -17,7 +17,6 @@ These configs have the following features:
 ## TODOs
 
 - Replace augroup defs with nvim api calls when they become available
-- Figure out how to set `g:clipboard` (can't just put `"unamedplus"` there)
 - Something with 80 chars per line
 - Move each plugin set to live in their own file
 - Add pics/gifs to README
