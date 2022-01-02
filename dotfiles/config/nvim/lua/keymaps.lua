@@ -3,7 +3,7 @@
 -- ------------------------------------
 
 -- Allow gf to create new files if it doesn't exits
-keymap('n', 'gf', ':edit <cfile><cr>', {})
+keymap('n', 'gf', '<Cmd>edit <cfile><CR>', {})
 
 -- Reselect visual selection after indenting
 keymap('v', '<', '<gv', noremap)
@@ -31,20 +31,19 @@ keymap('', '<C-k>', '<Esc><C-W>k', noremap)
 keymap('', '<C-l>', '<Esc><C-W>l', noremap)
 
 -- Tab navigation
-keymap('', '<C-o>', '<Esc>:tabnext<cr>', noremap)
-keymap('', '<C-i>', '<Esc>:tabprevious<cr>', noremap)
+keymap('', '<C-o>', '<Cmd>tabnext<CR>', noremap)
+keymap('', '<C-i>', '<Cmd>tabprevious<CR>', noremap)
 
 -- Closing and quitting
-keymap('', '<C-x>', '<Esc>:bd<cr>', silent)
-keymap('', '<C-w>', '<Esc>:tabclose<cr>', silent)
-keymap('', '<C-q>', '<Esc>:q<cr>', silent)
+keymap('', '<C-x>', '<Cmd>bd<CR>', silent)
+keymap('', '<C-w>', '<Cmd>tabclose<CR>', silent)
+keymap('', '<C-q>', '<Cmd>q<CR>', silent)
 
 -- Clear all buffers
-keymap('', '<C-c>', '<Esc>:bufdo! bdelete<cr>', noremap_silent)
+keymap('', '<C-c>', '<Cmd>bufdo! bdelete<CR>', noremap_silent)
 
 -- Clear highlighted search text
-keymap('n', '<C-u>', ':nohlsearch<cr>', silent)
-keymap('i', '<C-u>', '<Esc>:nohlsearch<cr>i', silent)
+keymap('n', '<C-u>', '<Cmd>nohlsearch<CR>', silent)
 
 -- ------------------------------------
 -- | Leader Maps
@@ -56,17 +55,17 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Numbers are for tab navigation
-keymap('n', '<leader>1', ':tabnext 1<cr>', silent)
-keymap('n', '<leader>2', ':tabnext 2<cr>', silent)
-keymap('n', '<leader>3', ':tabnext 3<cr>', silent)
-keymap('n', '<leader>4', ':tabnext 4<cr>', silent)
-keymap('n', '<leader>5', ':tabnext 5<cr>', silent)
-keymap('n', '<leader>6', ':tabnext 6<cr>', silent)
-keymap('n', '<leader>7', ':tabnext 7<cr>', silent)
-keymap('n', '<leader>8', ':tabnext 8<cr>', silent)
-keymap('n', '<leader>9', ':tabnext 9<cr>', silent)
+keymap('n', '<leader>1', '<Cmd>tabnext 1<CR>', silent)
+keymap('n', '<leader>2', '<Cmd>tabnext 2<CR>', silent)
+keymap('n', '<leader>3', '<Cmd>tabnext 3<CR>', silent)
+keymap('n', '<leader>4', '<Cmd>tabnext 4<CR>', silent)
+keymap('n', '<leader>5', '<Cmd>tabnext 5<CR>', silent)
+keymap('n', '<leader>6', '<Cmd>tabnext 6<CR>', silent)
+keymap('n', '<leader>7', '<Cmd>tabnext 7<CR>', silent)
+keymap('n', '<leader>8', '<Cmd>tabnext 8<CR>', silent)
+keymap('n', '<leader>9', '<Cmd>tabnext 9<CR>', silent)
 
 -- v namespace: tools for vim itself
-keymap('n', '<leader>ve', ':tabedit ~/.config/nvim/init.lua<cr>', noremap)
-keymap('n', '<leader>vs', ':source ~/.config/nvim/init.lua<cr>', noremap)
+keymap('n', '<leader>ve', '<Cmd>tabedit ~/.config/nvim/init.lua<CR>', noremap)
+keymap('n', '<leader>vs', '<Cmd>source ~/.config/nvim/init.lua<CR>', noremap)
 

@@ -8,7 +8,7 @@ function M.configure(use, keymap)
   require("trouble").setup({})
 
   -- x namespace: tools for vim itself
-  keymap('', '<c-e>', ':TroubleToggle<cr>', silent)
+  keymap('', '<C-e>', '<Cmd>TroubleToggle<CR>', silent)
 end
 
 return M

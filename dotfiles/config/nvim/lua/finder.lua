@@ -45,16 +45,16 @@ function M.configure(use)
 
   telescope.load_extension('fzf')
 
-  keymap('', '<C-f>', '<Esc>:Telescope find_files<cr>', noremap)
-  keymap('', '<C-g>', '<Esc>:Telescope live_grep<cr>', noremap)
-  keymap('', '<C-S-G>', '<Esc>:Telescope grep_string<cr>', noremap)
-  keymap('', '<C-b>', '<Esc>:Telescope buffers<cr>', noremap)
+  keymap('', '<C-f>', '<Cmd>Telescope find_files<CR>', noremap)
+  keymap('', '<C-g>', '<Cmd>Telescope live_grep<CR>', noremap)
+  keymap('', '<C-S-G>', '<Cmd>Telescope grep_string<CR>', noremap)
+  keymap('', '<C-b>', '<Cmd>Telescope buffers<CR>', noremap)
 
-  keymap('n', 'gd', ':Telescope lsp_definitions<cr>', {})
+  keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', {})
 
   -- t namespace: Telescope
-  keymap('n', '<leader>tt', ':Telescope tags<cr>', noremap)
-  keymap('n', '<leader>th', ':Telescope help_tags<cr>', noremap)
+  keymap('n', '<leader>tt', '<Cmd>Telescope tags<CR>', noremap)
+  keymap('n', '<leader>th', '<Cmd>Telescope help_tags<CR>', noremap)
 end
 
 return M

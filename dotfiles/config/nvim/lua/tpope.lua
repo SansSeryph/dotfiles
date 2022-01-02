@@ -14,7 +14,7 @@ function M.configure(use, keymap)
   use 'tpope/vim-apathy'
   use 'tpope/vim-rhubarb'
 
-  keymap('n', '<leader>g', ':Git<cr>', silent)
+  keymap('n', '<leader>g', '<Cmd>Git<CR>', silent)
 end
 
 return M
