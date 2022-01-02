@@ -182,6 +182,11 @@ _G.packer_plugins = {
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
@@ -206,6 +211,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["project.nvim"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["tabline-framework.nvim"] = {
     loaded = true,
@@ -306,6 +316,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
     url = "https://github.com/tpope/vim-rhubarb"
+  },
+  ["vim-ruby"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/vim-ruby",
+    url = "https://github.com/vim-ruby/vim-ruby"
   },
   ["vim-sayonara"] = {
     loaded = true,

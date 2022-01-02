@@ -58,6 +58,7 @@ packer.startup(function(use)
   require('colors').configure(use, keymap)
   require('errors').configure(use, keymap)
   require('language_helpers').configure(use, keymap)
+  require('projects').configure(use, keymap)
 
   -- ------------------------------------
   -- | By Plugin Name
