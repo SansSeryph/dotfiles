@@ -24,3 +24,4 @@ going. They start as `.md` files containing instructions but the goal is to
 # TODOs
 
 - Add some screenshots and gifs of what the setup looks like
+- Generate and update ctags for repos
