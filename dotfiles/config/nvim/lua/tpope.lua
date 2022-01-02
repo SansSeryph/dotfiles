@@ -14,7 +14,11 @@ function M.configure(use, keymap)
   use 'tpope/vim-apathy'
   use 'tpope/vim-rhubarb'
 
-  keymap('n', '<leader>g', '<Cmd>Git<CR>', silent)
+  -- g namespace: git
+  keymap('n', '<leader>gg', '<Cmd>Git<CR>', {})
+  keymap('n', '<leader>grs', '<Cmd>Git reset --soft HEAD^<CR>', {})
+  keymap('n', '<leader>gsc', '<Cmd>Git stash --include-untracked<CR>', {})
+  keymap('n', '<leader>gsp', '<Cmd>Git stash pop--include-untracked<CR>', {})
 end
 
 return M
