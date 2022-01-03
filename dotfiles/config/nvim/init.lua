@@ -38,46 +38,53 @@ packer.init {}
 -- | Start Loading Plugins
 -- ------------------------------------
 
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'fladson/vim-kitty'
+packer.startup({
+  function(use)
+    use 'wbthomason/packer.nvim'
+    use 'fladson/vim-kitty'
 
-  -- ------------------------------------
-  -- | By Feature
-  -- ------------------------------------
+    -- ------------------------------------
+    -- | Plugins By Name
+    -- ------------------------------------
 
-  require('colorschemes').configure(use, keymap)
-  require('language_servers').configure(use, keymap)
-  require('completions').configure(use, keymap)
-  require('finder').configure(use, keymap)
-  require('statusbar').configure(use, keymap)
-  require('tabs').configure(use, keymap)
-  require('autopairs').configure(use, keymap)
-  require('comments').configure(use, keymap)
-  require('git').configure(use, keymap)
-  require('colors').configure(use, keymap)
-  require('errors').configure(use, keymap)
-  require('language_helpers').configure(use, keymap)
-  require('projects').configure(use, keymap)
+    require('treesitter').configure(use, keymap)
+    require('sayonara').configure(use, keymap)
 
-  -- ------------------------------------
-  -- | By Plugin Name
-  -- ------------------------------------
+    -- ------------------------------------
+    -- | Plugins By Feature
+    -- ------------------------------------
 
-  require('treesitter').configure(use, keymap)
-  require('sayonara').configure(use, keymap)
+    require('colorschemes').configure(use, keymap)
+    require('language_servers').configure(use, keymap)
+    require('completions').configure(use, keymap)
+    require('finder').configure(use, keymap)
+    require('statusbar').configure(use, keymap)
+    require('tabs').configure(use, keymap)
+    require('autopairs').configure(use, keymap)
+    require('comments').configure(use, keymap)
+    require('git').configure(use, keymap)
+    require('colors').configure(use, keymap)
+    require('errors').configure(use, keymap)
+    require('language_helpers').configure(use, keymap)
+    require('projects').configure(use, keymap)
 
-  -- ------------------------------------
-  -- | By TPope
-  -- ------------------------------------
+    -- ------------------------------------
+    -- | Plugins By TPope
+    -- ------------------------------------
 
-  require('tpope').configure(use, keymap)
+    require('tpope').configure(use, keymap)
 
-  -- ------------------------------------
-  -- | Sync - Keep at end
-  -- ------------------------------------
+    -- ------------------------------------
+    -- | Sync - Keep at end
+    -- ------------------------------------
 
-  if packer_bootstrap then
-    packer.sync()
-  end
-end)
+    if packer_bootstrap then
+      packer.sync()
+    end
+  end,
+  config = {
+    display = {
+      open_fn = require('packer.util').float,
+    }
+  }
+})

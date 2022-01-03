@@ -5,6 +5,7 @@ function M.configure(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lua/plenary.nvim'
   use 'xiyaowong/telescope-emoji.nvim'
+  use 'nvim-telescope/telescope-packer.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -45,6 +46,7 @@ function M.configure(use)
 
   telescope.load_extension('fzf')
   telescope.load_extension('emoji')
+  telescope.load_extension('packer')
 
   keymap('', '<C-f>', '<Cmd>Telescope find_files<CR>', noremap)
   keymap('', '<C-g>', '<Cmd>Telescope live_grep<CR>', noremap)
