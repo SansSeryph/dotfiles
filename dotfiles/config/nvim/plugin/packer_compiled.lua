@@ -222,6 +222,11 @@ _G.packer_plugins = {
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/tabline-framework.nvim",
     url = "https://github.com/rafcamlet/tabline-framework.nvim"
   },
+  ["telescope-emoji.nvim"] = {
+    loaded = true,
+    path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/telescope-emoji.nvim",
+    url = "https://github.com/xiyaowong/telescope-emoji.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/sansseryph/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",

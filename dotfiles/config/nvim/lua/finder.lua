@@ -2,15 +2,15 @@ local M = {}
 
 function M.configure(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
   use 'kyazdani42/nvim-web-devicons'
-  require('nvim-web-devicons').setup({})
-
   use 'nvim-lua/plenary.nvim'
+  use 'xiyaowong/telescope-emoji.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  require('nvim-web-devicons').setup({})
 
   local telescope = require('telescope')
 
@@ -44,6 +44,7 @@ function M.configure(use)
   })
 
   telescope.load_extension('fzf')
+  telescope.load_extension('emoji')
 
   keymap('', '<C-f>', '<Cmd>Telescope find_files<CR>', noremap)
   keymap('', '<C-g>', '<Cmd>Telescope live_grep<CR>', noremap)
@@ -55,6 +56,7 @@ function M.configure(use)
   -- t namespace: Telescope
   keymap('n', '<leader>tt', '<Cmd>Telescope tags<CR>', noremap)
   keymap('n', '<leader>th', '<Cmd>Telescope help_tags<CR>', noremap)
+  keymap('n', '<leader>te', '<Cmd>Telescope emoji<CR>', noremap)
 end
 
 return M
