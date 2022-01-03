@@ -86,6 +86,7 @@ function M.configure(use)
 
   -- StyleLint
   lsp.stylelint_lsp.setup({
+    capabilities = capabilities,
     settings = {
       stylelintplus = {
         autoFixOnSave = true,
