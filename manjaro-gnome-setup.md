@@ -96,14 +96,14 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
 asdf global nodejs latest
 
-npm install -g yarn
-yarn global add neovim ansible-language-server bash-language-server \
-	vscode-langservers-extracted cssmodules-language-server \
+npm install --global yarn
+yarn global add \
+  neovim ansible-language-server bash-language-server \
+  vscode-langservers-extracted cssmodules-language-server \
   diagnostic-languageserver dockerfile-language-server-nodejs \
   sql-language-server stylelint-lsp @tailwindcss/language-server \
   typescript typescript-language-server vim-language-server @volar/server vls \
-  yaml-language-server
-  
+  yaml-language-server remark-language-server
 
 asdf reshim nodejs latest
 ```
