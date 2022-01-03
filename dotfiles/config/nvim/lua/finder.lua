@@ -26,17 +26,7 @@ function M.configure(use)
       prompt_prefix = '🔎 ',
       selection_caret = '➤ ',
       mappings = {
-        n = {
-          ['<C-n>'] = false,
-          ['<C-p>'] = false,
-        },
         i = {
-          ['<C-n>'] = false,
-          ['<C-p>'] = false,
-          ['<C-j>'] = 'move_selection_next',
-          ['<C-k>'] = 'move_selection_previous',
-          ['<C-n>'] = 'move_to_bottom',
-          ['<C-p>'] = 'move_to_top',
           ['<C-a>'] = 'toggle_all',
           ['<ESC>'] = 'close',
         },
@@ -48,11 +38,13 @@ function M.configure(use)
   telescope.load_extension('emoji')
   telescope.load_extension('packer')
 
+  -- ctrl maps
   keymap('', '<C-f>', '<Cmd>Telescope find_files<CR>', noremap)
   keymap('', '<C-g>', '<Cmd>Telescope live_grep<CR>', noremap)
   keymap('', '<C-S-G>', '<Cmd>Telescope grep_string<CR>', noremap)
   keymap('', '<C-b>', '<Cmd>Telescope buffers<CR>', noremap)
 
+  -- remaps
   keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', {})
 
   -- t namespace: Telescope
