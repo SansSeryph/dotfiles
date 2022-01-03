@@ -22,11 +22,9 @@ These configs have the following features:
 
 ## TODOs
 
+- Rework configs to be able to be installed from nothing
 - Add pics/gifs to README
 - Add customized keymaps to README
-
-- Completions
-  - Use ctrl and j/k to navigate completion options instead of n/p
 
 - LSPs
   - Make sure there's a SASS LSP (cssls might be able to)
