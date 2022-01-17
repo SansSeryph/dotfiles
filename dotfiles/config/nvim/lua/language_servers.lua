@@ -77,6 +77,12 @@ function M.configure(use)
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
+
+  vim.diagnostic.config({ virtual_text = false })
+  vim.api.nvim_exec(
+    [[autocmd CursorHold * silent! lua vim.lsp.buf.formatting_sync()]],
+    false
+  )
 end
 
 return M
