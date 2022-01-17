@@ -82,7 +82,6 @@ function M.configure(use)
   lsp.cssls.setup { capabilities = capabilities }
   lsp.html.setup { capabilities = capabilities }
   lsp.jsonls.setup { capabilities = capabilities }
-  lsp.remark_ls.setup { capabilities = capabilities }
 
   -- StyleLint
   lsp.stylelint_lsp.setup({

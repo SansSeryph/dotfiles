@@ -33,7 +33,6 @@ function M.configure(use)
     'dockerls',
     'typeprof',
     'solargraph',
-    'remark_ls',
   }
 
   for _, server in ipairs(servers) do
