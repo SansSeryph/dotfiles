@@ -61,3 +61,14 @@ profiles:
     - f_tmux.conf
     - f_gitconfig
     - f_dynamic_wallpapers.xml
+  carbuncle.local:
+    dotfiles:
+    - d_fish
+    - d_nvim
+    - d_kitty
+    - f_asdfrc
+    - f_default-gems
+    - f_default-npm-packages
+    - f_default-python-packages
+    - f_tmux.conf
+    - f_gitconfig
