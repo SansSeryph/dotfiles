@@ -5,7 +5,10 @@
 	email = sansseryph@gmail.com
 [core]
 	pager = nvim +Man!
+	excludesfile = /Users/sansseryph/.gitignore
 [color]
 	pager = no
 [pull]
 	rebase = true
+[push]
+	default = current
