@@ -54,4 +54,4 @@ vim.o.redrawtime = 10000
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = '~/.asdf/shims/python3'
 vim.o.foldlevelstart = 99
-
+vim.g.clipboard = 'unnamedplus'

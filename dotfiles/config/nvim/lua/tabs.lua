@@ -16,15 +16,6 @@ function M.configure(use)
       end)
 
       f.add_spacer()
-
-      -- get some info from lsp
-      local errors = vim.lsp.diagnostic.get_count(0, 'Error')
-      local warnings = vim.lsp.diagnostic.get_count(0, 'Warning')
-
-      -- and display it
-      f.add { '  ' .. errors, fg = "#e86671" }
-      f.add { '  ' .. warnings, fg = "#e5c07b"}
-      f.add ' '
     end,
   })
 end

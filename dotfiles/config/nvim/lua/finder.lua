@@ -18,6 +18,7 @@ function M.configure(use)
 
   telescope.setup({
     defaults = {
+      color_devicons = true,
       layout = 'horizontal',
       layout_config = {
         anchor = 'CENTER',
@@ -32,17 +33,30 @@ function M.configure(use)
           ['<ESC>'] = 'close',
         },
       },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+      },
     },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+    }
   })
 
-  telescope.load_extension('fzf')
   telescope.load_extension('emoji')
   telescope.load_extension('packer')
-
-  -- ctrl maps
-  keymap('', '<C-f>', '<Cmd>Telescope find_files<CR>', noremap)
-  keymap('', '<C-g>', '<Cmd>Telescope live_grep<CR>', noremap)
-  keymap('', '<C-b>', '<Cmd>Telescope buffers<CR>', noremap)
+  telescope.load_extension('fzf')
 
   -- remaps
   keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', {})
@@ -54,6 +68,7 @@ function M.configure(use)
   keymap('n', '<leader>ft', '<Cmd>Telescope tags<CR>', noremap)
   keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', noremap)
   keymap('n', '<leader>fe', '<Cmd>Telescope emoji<CR>', noremap)
+  keymap('n', '<leader>fv', '<Cmd>Telescope grep_string search="" cwd=~/.config/nvim/<CR>', noremap)
 end
 
 return M
