@@ -46,7 +46,7 @@ pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop steam-manjaro keybase keybase-gui tmux   \
 	keepassxc betterdiscord-installer betterdiscordctl discord fish kitty htop   \
 	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js-git fd tree  \
-  github-cli ctags
+  github-cli ctags syncthing
 ```
 
 ## Dotfiles
@@ -158,6 +158,10 @@ git clone https://github.com/catppuccin/wallpapers Pictures/Wallpapers/catppucci
 TODO: Find a way to load `~/Documents/dynamic_wallpapers.xml` into Dynamic Wallpaper Editor from 
 CLI
 
+## Syncthing
+
+systemctl enable --user syncthing
+
 ## Final Steps
 
 - Log into accounts:
@@ -170,6 +174,7 @@ CLI
 	- Keybase
 - Make sure keybase auto-starts on OS start
 - Create an SSH key 
+- Set up Syncthing
 - Set the DuckDuckGo Theme to be Catppuccin:
   1. Visit https://duckduckgo.com/settings
   2. Go to Cloud Save > Load Settings.
