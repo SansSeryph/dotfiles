@@ -1,9 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export EDITOR:/usr/bin/nvim
+SETUVAR --export EDITOR:nvim
 SETUVAR --export MANPAGER:nvim\x20\x2bMan\x21
-SETUVAR --export PAGER:nvim\x20\x2dR
-SETUVAR --export VISUAL:/usr/bin/nvim
+SETUVAR --export PAGER:nvim\x1e\x2bMan\x21
+SETUVAR --export SSH_USERNAME:kyla\x2eharper
+SETUVAR --export VISUAL:nvim
 SETUVAR --export WAYLAND_DISPLAY:wayland\x2d0
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
