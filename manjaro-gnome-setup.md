@@ -98,7 +98,7 @@ asdf global nodejs latest
 
 npm install --global yarn
 yarn global add \
-  neovim ansible-language-server bash-language-server \
+  neovim @ansible/ansible-language-server bash-language-server \
   vscode-langservers-extracted cssmodules-language-server \
   diagnostic-languageserver dockerfile-language-server-nodejs \
   sql-language-server stylelint-lsp @tailwindcss/language-server \
@@ -124,9 +124,10 @@ gem ctags
 ```
 asdf plugin add python https://github.com/danhper/asdf-python
 asdf install python latest
-adsf global python latest
+asdf global python latest
 
-pip install --user ansible ansible-lint yamllint
+pip install --ugprade pip
+pip install --user ansible ansible-lint yamllint docopt requests
 
 asdf reshim python latest
 ```
