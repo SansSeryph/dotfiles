@@ -47,12 +47,16 @@ dotfiles:
   f_dynamic_wallpapers.xml:
     src: Documents/dynamic_wallpapers.xml
     dst: ~/Documents/dynamic_wallpapers.xml
+  d_btop:
+    src: config/btop
+    dst: ~/.config/btop
 profiles:
   terra:
     dotfiles:
     - d_fish
     - d_nvim
     - d_kitty
+    - d_btop
     - f_pikaur.conf
     - f_asdfrc
     - f_default-gems
@@ -66,6 +70,7 @@ profiles:
     - d_fish
     - d_nvim
     - d_kitty
+    - d_btop
     - f_asdfrc
     - f_default-gems
     - f_default-npm-packages
