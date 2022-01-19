@@ -39,8 +39,9 @@ keymap('', '<C-x>', '<Cmd>bd<CR>', silent)
 keymap('', '<C-w>', '<Cmd>tabclose<CR>', silent)
 keymap('', '<C-q>', '<Cmd>q<CR>', silent)
 
--- Clear all buffers
-keymap('', '<C-c>', '<Cmd>bufdo! bdelete<CR>', noremap_silent)
+-- Clear buffers
+keymap('', '<C-x>', '<Cmd>bdelete<CR>', silent)
+keymap('', '<C-c>', '<Cmd>bufdo! bdelete<CR>', silent)
 
 -- Clear highlighted search text
 keymap('n', '<C-u>', '<Cmd>nohlsearch<CR>', silent)
