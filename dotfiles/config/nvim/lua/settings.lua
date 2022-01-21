@@ -33,7 +33,7 @@ vim.o.incsearch = true
 
 vim.g.autowrite = true
 vim.o.autowriteall = true
-vim.bo.swapfile = false
+vim.o.swapfile = false
 vim.api.nvim_exec([[autocmd CursorHold,CursorHoldI * silent! update]], false)
 
 -- ------------------------------------
