@@ -11,10 +11,11 @@ TODO: Add stuff here
 # Install Applications
 
 ```
-brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.git
 brew tap homebrew/cask-fonts
+brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.git
 
 brew install gh tldr quick-lint-js fd ripgrep tree neovim exa bat tmux fish \
-             htop ctags font-Fira-Code-nerd-font openssl readline btop
-brew install --cask spotify kitty
+             htop ctags font-Fira-Code-nerd-font openssl readline btop \
+             syncthing
+brew install --cask spotify kitty keepassxc authy
 ```
