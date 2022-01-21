@@ -8,4 +8,9 @@ if status is-interactive
   else
     echo "OS type not listed"
   end
+
+  set --local bin_dir ~/Workspace/bin
+  if test -d $bin_dir
+    set --append PATH $bin_dir
+  end
 end
