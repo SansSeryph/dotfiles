@@ -16,6 +16,6 @@ brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.gi
 
 brew install gh tldr quick-lint-js fd ripgrep tree neovim exa bat tmux fish \
              htop ctags font-Fira-Code-nerd-font openssl readline btop \
-             syncthing
+             syncthing git
 brew install --cask spotify kitty keepassxc authy
 ```
