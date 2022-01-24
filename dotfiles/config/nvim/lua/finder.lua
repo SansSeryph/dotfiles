@@ -6,14 +6,14 @@ function M.configure(use)
     requires = {
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-packer.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-node-modules.nvim' },
+      { 'nvim-telescope/telescope-packer.nvim' },
       { 'xiyaowong/telescope-emoji.nvim' },
-    }
+    },
   }
 
   require('nvim-web-devicons').setup({})
-
   local telescope = require('telescope')
 
   telescope.setup({
@@ -57,18 +57,19 @@ function M.configure(use)
   telescope.load_extension('emoji')
   telescope.load_extension('packer')
   telescope.load_extension('fzf')
+  telescope.load_extension('node_modules')
 
   -- remaps
   keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', {})
 
   -- f namespace: Telescope
   keymap('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', noremap)
-  keymap('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>', noremap)
+  keymap('n', '<leader>fg', "<Cmd>Telescope grep_string search=''<CR>", noremap)
   keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', noremap)
   keymap('n', '<leader>ft', '<Cmd>Telescope tags<CR>', noremap)
   keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', noremap)
   keymap('n', '<leader>fe', '<Cmd>Telescope emoji<CR>', noremap)
-  keymap('n', '<leader>fv', '<Cmd>Telescope grep_string search="" cwd=~/.config/nvim/<CR>', noremap)
+  keymap('n', '<leader>fv', "<Cmd>Telescope grep_string search='' cwd=~/.config/nvim/<CR>", noremap)
 end
 
 return M
