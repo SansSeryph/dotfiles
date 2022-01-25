@@ -69,7 +69,7 @@ function M.configure(use)
   keymap('n', '<leader>ft', '<Cmd>Telescope tags<CR>', noremap)
   keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', noremap)
   keymap('n', '<leader>fe', '<Cmd>Telescope emoji<CR>', noremap)
-  keymap('n', '<leader>fv', "<Cmd>Telescope grep_string search='' cwd=~/.config/nvim/<CR>", noremap)
+  keymap('n', '<leader>fv', "<Cmd>Telescope find_files search_dirs=~/.config/nvim/<CR>", noremap)
 end
 
 return M
