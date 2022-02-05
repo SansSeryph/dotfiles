@@ -2,9 +2,6 @@
 -- | Remaps
 -- ------------------------------------
 
--- Allow gf to create new files if it doesn't exits
-keymap('n', 'gf', '<Cmd>edit <cfile><CR>', {})
-
 -- Reselect visual selection after indenting
 keymap('v', '<', '<gv', noremap)
 keymap('v', '>', '>gv', noremap)
