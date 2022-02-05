@@ -9,7 +9,6 @@ function M.configure(use)
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-node-modules.nvim' },
       { 'nvim-telescope/telescope-packer.nvim' },
-      { 'xiyaowong/telescope-emoji.nvim' },
     },
   }
 
@@ -54,7 +53,6 @@ function M.configure(use)
     }
   })
 
-  telescope.load_extension('emoji')
   telescope.load_extension('packer')
   telescope.load_extension('fzf')
   telescope.load_extension('node_modules')
@@ -68,7 +66,6 @@ function M.configure(use)
   keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', noremap)
   keymap('n', '<leader>ft', '<Cmd>Telescope tags<CR>', noremap)
   keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', noremap)
-  keymap('n', '<leader>fe', '<Cmd>Telescope emoji<CR>', noremap)
   keymap('n', '<leader>fv', "<Cmd>Telescope find_files search_dirs=~/.config/nvim/<CR>", noremap)
 end
 
