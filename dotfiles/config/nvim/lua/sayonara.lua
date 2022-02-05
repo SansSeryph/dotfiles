@@ -8,8 +8,8 @@ function M.configure(use, keymap)
     fugitive = 'bdelete'
   }
 
-  keymap('', '<C-x>', '<Cmd>Sayonara<CR>', silent)
-  keymap('', '<C-c>', '<Cmd>Sayonara!<CR>', silent)
+  keymap('', '<C-x>', '<Cmd>Sayonara!<CR>', silent)
+  keymap('', '<C-c>', '<Cmd>Sayonara<CR>', silent)
 end
 
 return M
