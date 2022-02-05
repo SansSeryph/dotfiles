@@ -19,7 +19,7 @@ function updates
   pip list --user --outdated --format=freeze \
     | grep -v '^\-e' \
     | cut -d = -f 1 \
-    | xargs -n1 pip install --upgrade --progress-bar pretty
+    | xargs -n1 pip install --upgrade --progress-bar pretty 2> /dev/null
 
   nvim +PackerSync +q
   omf update
