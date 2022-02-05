@@ -49,16 +49,26 @@ function M.configure(use)
   telescope.load_extension('fzf')
   telescope.load_extension('node_modules')
 
+  local prefix = '<Cmd>lua require("telescope.builtin").'
+  local suffix = '<CR>'
+  local leader = '<leader>'
+
   -- remaps
-  keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', {})
+  keymap('n', 'gd', prefix .. 'lsp_definitions()' .. suffix, {})
 
   -- f namespace: Telescope
-  keymap('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', noremap)
-  keymap('n', '<leader>fg', "<Cmd>Telescope grep_string search=''<CR>", noremap)
-  keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', noremap)
-  keymap('n', '<leader>ft', '<Cmd>Telescope tags<CR>', noremap)
-  keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', noremap)
-  keymap('n', '<leader>fv', "<Cmd>Telescope find_files search_dirs=~/.config/nvim/<CR>", noremap)
+  local leader_maps = {
+    ff = 'find_files({hidden = true, no_ignore=true, follow=true})',
+    fg = 'grep_string({search=""})',
+    fb = 'buffers()',
+    ft = 'tags()',
+    fh = 'help_tags()',
+    fv = 'find_files({search_dirs={"~/.config/nvim/"}})',
+  }
+
+  for map, command in pairs(leader_maps) do
+    keymap('n', leader .. map, prefix .. command .. suffix, {})
+  end
 end
 
 return M
