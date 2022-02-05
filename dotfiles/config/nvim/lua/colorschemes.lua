@@ -2,16 +2,13 @@ local M = {}
 
 function M.configure(use)
   use 'dracula/vim'
-  use { 'catppuccin/nvim', as = 'catppuccin' }
-
-  require('catppuccin').setup({
-    term_colors = true,
-    integrations = {
-      treesitter = true,
-      telescope = true,
-      markdown = true,
-    },
-  })
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function()
+      require('catppuccin').setup({ term_colors = true })
+    end,
+  }
 
   vim.cmd[[colorscheme catppuccin]]
 end

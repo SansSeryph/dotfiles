@@ -66,4 +66,3 @@ keymap('n', '<leader>9', '<Cmd>tabnext 9<CR>', silent)
 -- v namespace: tools for vim itself
 keymap('n', '<leader>ve', '<Cmd>tabedit ~/.config/nvim/init.lua<CR>', noremap)
 keymap('n', '<leader>vs', '<Cmd>source ~/.config/nvim/init.lua<CR>', noremap)
-
