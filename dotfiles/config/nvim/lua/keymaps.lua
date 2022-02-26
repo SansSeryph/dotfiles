@@ -33,7 +33,6 @@ keymap('', '<C-i>', '<Cmd>tabprevious<CR>', noremap)
 
 -- Closing and quitting
 keymap('', '<C-x>', '<Cmd>bd<CR>', silent)
-keymap('', '<C-w>', '<Cmd>tabclose<CR>', silent)
 keymap('', '<C-q>', '<Cmd>q<CR>', silent)
 
 -- Clear buffers

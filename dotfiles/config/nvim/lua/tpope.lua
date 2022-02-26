@@ -19,6 +19,8 @@ function M.configure(use)
     config = function()
       -- g namespace: git
       keymap('n', '<leader>gg', '<Cmd>Git<CR>', {})
+      keymap('n', '<leader>grc', '<Cmd>Git rebase --continue<CR>', {})
+      keymap('n', '<leader>gra', '<Cmd>Git rebase --abort<CR>', {})
       keymap('n', '<leader>gss', '<Cmd>Git switch staging<CR>', {})
       keymap('n', '<leader>grs', '<Cmd>Git reset --soft HEAD^<CR>', {})
       keymap('n', '<leader>gsc', '<Cmd>Git stash --include-untracked<CR>', {})

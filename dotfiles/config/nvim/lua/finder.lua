@@ -17,6 +17,7 @@ function M.configure(use)
       telescope.setup({
         defaults = {
           color_devicons = true,
+          file_ignore_patterns = { "node_modules" },
           layout = 'horizontal',
           layout_config = {
             anchor = 'CENTER',
@@ -30,16 +31,6 @@ function M.configure(use)
               ['<C-a>'] = 'toggle_all',
               ['<ESC>'] = 'close',
             },
-          },
-          vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
           },
         },
       })
@@ -57,12 +48,13 @@ function M.configure(use)
 
       -- f namespace: Telescope
       local leader_maps = {
-        ff = 'find_files({hidden = true, no_ignore=true, follow=true})',
+        ff = 'find_files({hidden = true, no_ignore=true, follow=true, previewer=false})',
         fg = 'grep_string({search=""})',
         fb = 'buffers()',
         ft = 'tags()',
         fh = 'help_tags()',
         fv = 'find_files({search_dirs={"~/.config/nvim/"}})',
+        fi = 'lsp_references()',
       }
 
       for map, command in pairs(leader_maps) do
