@@ -15,7 +15,9 @@ function M.configure(use)
     },
     config = function()
       require('nvim-treesitter.install').prefer_git = true
-      require('nvim-treesitter.configs').setup({})
+      require('nvim-treesitter.configs').setup({
+        tree_docs = { enable = true }
+      })
 
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
