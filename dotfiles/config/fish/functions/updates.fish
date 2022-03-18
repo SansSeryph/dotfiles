@@ -6,7 +6,7 @@ function updates
       sudo softwareupdate --install --all
       sudo mas upgrade
     case Linux
-      sudo rankmirrors --country United_State,Canada --api --protocols https
+      sudo rankmirrors --country United_States,Canada --api --protocols https
       pikaur -Syyu --noconfirm
   end
 
