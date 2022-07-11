@@ -134,6 +134,20 @@ cpanm -n App::cpanminus
 asdf reshim perl latest
 ```
 
+### Lua
+
+mkdir -p ~/Workspace/builds/
+cd ~/Workspace/builds/
+pikaur --sync --needed --noconfirm ninja
+git clone  --depth=1 https://github.com/sumneko/lua-language-server
+cd lua-language-server
+git submodule update --depth 1 --init --recursive
+cd 3rd/luamake
+./compile/install.sh
+cd ../..
+./3rd/luamake/luamake rebuild
+ln -sf ./bin/lua-language-server ~/.local/bin/
+
 ## Discord
 
 TODO: Install Better Discord
