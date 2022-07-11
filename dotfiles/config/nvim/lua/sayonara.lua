@@ -1,18 +1,11 @@
 local M = {}
 
-function M.configure(use)
-  use {
-    'phongnh/vim-sayonara',
-    config = function()
-      vim.g.sayonara_filetypes = {
-        trouble = 'TroubleClose',
-        fugitive = 'bdelete'
-      }
+function M.configure(use, keymap)
+  use { 'mhinz/vim-sayonara' }
 
-      keymap('', '<C-x>', '<Cmd>Sayonara!<CR>', silent)
-      keymap('', '<C-c>', '<Cmd>Sayonara<CR>', silent)
-    end,
-  }
+  local opts = { noremap = true, silent = true }
+  keymap('', '<C-x>', '<Cmd>Sayonara!<CR>', opts)
+  keymap('', '<C-c>', '<Cmd>Sayonara<CR>', opts)
 end
 
 return M

@@ -1,24 +1,23 @@
 local M = {}
 
-function M.configure(use)
+function M.configure(use, keymap)
   use {
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('trouble').setup()
-      local opts = { silent = true, noremap = true }
-
-      -- remaps
-      keymap('n', 'gR', '<Cmd>Trouble lsp_references<CR>', opts)
-
-      -- x namespace: trouble
-      keymap('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', opts)
-      keymap('n', '<leader>xw', '<Cmd>Trouble workspace_diagnostics<CR>', opts)
-      keymap('n', '<leader>xd', '<Cmd>Trouble document_diagnostics<CR>', opts)
-      keymap('n', '<leader>xl', '<Cmd>Trouble loclist<CR>', opts)
-      keymap('n', '<leader>xq', '<Cmd>Trouble quickfix<CR>', opts)
-    end,
+    configure = function()
+      require('trouble').setup({})
+    end
   }
+
+  local opts = { noremap = true, silent = true }
+
+  -- x namespace: errors
+  keymap('n', '<leader>xx', '<cmd>Trouble<cr>', opts)
+  keymap('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', opts)
+  keymap('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', opts)
+  keymap('n', '<leader>xl', '<cmd>Trouble loclist<cr>', opts)
+  keymap('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', opts)
+  keymap('n', '<leader>xr', '<cmd>Trouble lsp_references<cr>', opts)
 end
 
 return M

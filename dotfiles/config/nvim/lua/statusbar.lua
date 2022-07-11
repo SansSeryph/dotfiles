@@ -1,9 +1,8 @@
 local M = {}
 
-function M.configure(use)
+function M.configure(use, _)
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function()
       require('lualine').setup({
         options = {
@@ -24,7 +23,7 @@ function M.configure(use)
           },
         },
       })
-    end,
+    end
   }
 end
 

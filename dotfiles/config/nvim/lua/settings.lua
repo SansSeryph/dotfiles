@@ -1,56 +1,64 @@
 -- ------------------------------------
+-- | Helpers
+-- ------------------------------------
+
+local set = vim.o
+local global = vim.g
+local window = vim.w
+
+-- ------------------------------------
 -- | Indentation
 -- ------------------------------------
 
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.smarttab = true
-vim.o.autoindent = true
-vim.o.smartindent = true
+set.expandtab = true
+set.smarttab = true
+set.autoindent = true
+set.smartindent = true
+
+set.shiftwidth = 2
+set.tabstop = 2
+set.softtabstop = 2
 
 -- ------------------------------------
 -- | Sign Column
 -- ------------------------------------
 
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.signcolumn = "yes"
+set.number = true
+set.relativenumber = true
+set.signcolumn = "yes"
 
 -- ------------------------------------
 -- | Searching
 -- ------------------------------------
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.tagcase = "followscs"
-vim.o.incsearch = true
+set.ignorecase = true
+set.smartcase = true
+set.incsearch = true
+set.tagcase = "smart"
 
 -- ------------------------------------
 -- | Automatically save files
 -- ------------------------------------
 
-vim.g.autowrite = true
-vim.o.autowriteall = true
-vim.o.swapfile = false
-vim.api.nvim_exec([[autocmd CursorHold,CursorHoldI * silent! update]], false)
+set.autowriteall = true
+set.swapfile = false
+vim.cmd([[autocmd CursorHold,CursorHoldI * silent! update]], false)
 
 -- ------------------------------------
 -- | Misc
 -- ------------------------------------
 
-vim.o.scrolloff = 100
-vim.o.sidescrolloff = 8
-vim.o.splitright = true
-vim.o.hidden = true
-vim.o.termguicolors = true
-vim.o.undofile = true
-vim.o.title = true
-vim.g.shortmess = 'aoOtTIF'
-vim.o.wildmode = "longest:full,full"
-vim.o.updatetime = 500
-vim.o.redrawtime = 10000
-vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = '~/.asdf/shims/python3'
-vim.o.foldlevelstart = 99
+set.splitright = true
+set.hidden = true
+set.termguicolors = true
+set.undofile = true
+set.title = true
+
+set.scrolloff = 100
+set.sidescrolloff = 8
+global.shortmess = 'aoOtTIF'
+set.wildmode = "longest:full,full"
+set.updatetime = 500
+set.redrawtime = 5000
+global.python3_host_prog = '~/.asdf/shims/python3'
+window.foldmethod = 'syntax'

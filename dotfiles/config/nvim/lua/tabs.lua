@@ -1,6 +1,6 @@
 local M = {}
 
-function M.configure(use)
+function M.configure(use, _)
   use {
     'rafcamlet/tabline-framework.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -9,7 +9,6 @@ function M.configure(use)
         render = function(f)
           f.make_tabs(function(info)
             f.add(' ' .. info.index .. ' ')
-
             f.add(info.filename or '[-]')
             f.add(' ')
           end)
