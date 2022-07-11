@@ -46,7 +46,7 @@ pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop steam-manjaro keybase keybase-gui tmux   \
 	keepassxc betterdiscord-installer betterdiscordctl discord fish kitty htop   \
 	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js-git fd tree  \
-  github-cli ctags syncthing
+	github-cli ctags syncthing
 ```
 
 ## Dotfiles
@@ -95,16 +95,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
 asdf global nodejs latest
-
-npm install --global yarn
-yarn global add \
-  neovim @ansible/ansible-language-server bash-language-server \
-  vscode-langservers-extracted cssmodules-language-server \
-  diagnostic-languageserver dockerfile-language-server-nodejs \
-  sql-language-server stylelint-lsp @tailwindcss/language-server \
-  typescript typescript-language-server vim-language-server @volar/server vls \
-  yaml-language-server remark-language-server
-
 asdf reshim nodejs latest
 ```
 
