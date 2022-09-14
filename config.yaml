@@ -2,48 +2,49 @@ config:
   backup: true
   create: true
   dotpath: dotfiles
+  minversion: 1.11.0
 dotfiles:
   d_fish:
     src: config/fish
     dst: ~/.config/fish
-    link: link
+    link: absolute
     chmod: '700'
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
-    link: link
+    link: absolute
   d_kitty:
     src: config/kitty
     dst: ~/.config/kitty
-    link: link
+    link: absolute
   f_pikaur.conf:
     src: config/pikaur.conf
     dst: ~/.config/pikaur.conf
-    link: link
+    link: absolute
   f_asdfrc:
     src: asdfrc
     dst: ~/.asdfrc
-    link: link
+    link: absolute
   f_default-gems:
     src: default-gems
     dst: ~/.default-gems
-    link: link
+    link: absolute
   f_default-npm-packages:
     src: default-npm-packages
     dst: ~/.default-npm-packages
-    link: link
+    link: absolute
   f_default-python-packages:
     src: default-python-packages
     dst: ~/.default-python-packages
-    link: link
+    link: absolute
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
-    link: link
+    link: absolute
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
-    link: link
+    link: absolute
   f_dynamic_wallpapers.xml:
     src: Documents/dynamic_wallpapers.xml
     dst: ~/Documents/dynamic_wallpapers.xml
