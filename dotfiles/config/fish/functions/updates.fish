@@ -13,7 +13,7 @@ function updates
   tldr --update_cache
   yarn global upgrade --latest
   asdf plugin update --all
-  gem update
+  gem update && gem cleanup
 
   pip install --upgrade pip
   pip list --user --outdated --format=freeze \
@@ -22,5 +22,4 @@ function updates
     | xargs -n1 pip install --upgrade --progress-bar pretty 2> /dev/null
 
   nvim +PackerSync +q
-  omf update
 end
