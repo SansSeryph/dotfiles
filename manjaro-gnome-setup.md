@@ -1,29 +1,20 @@
-# Install Steps
+# Manjaro Setup
 
 Steps to take after a fresh Manjaro Gnome install.
 
 ## Add/Remove Software App
 
-### General Tab
-
-TODO: Remove update notification tray icon
-TODO: Add configs to dotfiles
-
-1. Update all packages
-1. Install applications: `pikaur`
+- TODO: Find a way to add these configs to this repo
+- Update all packages
 
 ## Settings App
 
-TODO: Find the config files
-TODO: Add config files to dotfiles
+- TODO: Find the config files and add to dotfiles repo
 
 ## Manjaro Settings Manager App
 
-TODO: Can this be automated?
-
-Under `Hardware Configuration`:
-1. Click `Auto Install Open-Source Driver`
-1. Click `Auto Install Proprietary Driver`
+- TODO: Can this be automated?
+Under `Hardware Configuration`, click `Auto Install Open-Source Driver`
 
 ## Applications
 
@@ -41,26 +32,34 @@ rm -rf pikaur
 ### Install Applications
 
 ```
-pikaur --remove --recursive --noconfirm firefox-theme-gnome-maia
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
+
+pikaur --remove --recursive --noconfirm firefox-gnome-theme-maia
 pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
-	libappindicator-gtk3 signal-desktop steam-manjaro keybase keybase-gui tmux   \
-	keepassxc betterdiscord-installer betterdiscordctl discord fish kitty htop   \
-	neovim-qt ripgrep ttf-fira-code spotify quick-lint-js-git fd tree  \
-	github-cli ctags syncthing
+	libappindicator-gtk3 signal-desktop tmux keepassxc betterdiscord-installer \
+	betterdiscordctl discord fish kitty htop neovim-qt ripgrep \
+	ttf-fira-code spotify quick-lint-js-git fd tree github-cli ctags \
+	syncthing steam zoom obsidian
 ```
 
 ## Dotfiles
 
 ```
-mkdir ~/Workspace
+mkdir -p ~/Workspace
 git clone https://github.com/SansSeryph/dotfiles
 cd dotfiles
+pikaur -S python-pip
+pip install --user -r dotdrop/requirements.txt
+```
+
+If needed, create a new entry for the device in `config.yaml` and then run:
+```
 ./dotdrop.sh install
 ```
 
-TODO: In `~/.default-npm-packages`, add eslint and other related eslint plugins
-TODO: For Perl, might need to specially configure the global version in ~/.tool-versions
-TODO: Find and add Gnome configs
+- TODO: In `~/.default-npm-packages`, add eslint and other related eslint plugins
+- TODO: For Perl, might need to specially configure the global version in ~/.tool-versions
+- TODO: Find and add Gnome configs
 
 ## Development Environment Setup
 
@@ -116,7 +115,7 @@ asdf plugin add python https://github.com/danhper/asdf-python
 asdf install python latest
 asdf global python latest
 
-pip install --ugprade pip
+pip install --upgrade pip
 pip install --user ansible ansible-lint yamllint docopt requests
 
 asdf reshim python latest
@@ -136,6 +135,7 @@ asdf reshim perl latest
 
 ### Lua
 
+```
 mkdir -p ~/Workspace/builds/
 cd ~/Workspace/builds/
 pikaur --sync --needed --noconfirm ninja
@@ -147,39 +147,46 @@ cd 3rd/luamake
 cd ../..
 ./3rd/luamake/luamake rebuild
 ln -sf ./bin/lua-language-server ~/.local/bin/
+```
 
 ## Discord
 
 TODO: Install Better Discord
 
+- Run Discord to install updates
+- `betterdiscord-installer`
+
 # Gnome
 
 ## Syncthing
 
+```
 systemctl enable --user syncthing
+systemctl start --user syncthing
+```
+
+- Go to `127.0.0.1:8384` to access the GUI
+- Connect the device to others on the same network
 
 ## Final Steps
 
+- Set up KeepassXC
 - Log into accounts:
 	- Authy
 	- Firefox
 	- Discord
-	- Keybase
 	- Steam
 	- Signal
-	- Keybase
-- Make sure keybase auto-starts on OS start
-- Create an SSH key 
-- Set up Syncthing
+- Create an SSH key and add it to Github
 - Set the DuckDuckGo Theme to be Catppuccin:
   1. Visit https://duckduckgo.com/settings
   2. Go to Cloud Save > Load Settings.
   3. Enter `catppuccin-ddg` as passphrase.
   4. Click on `Load` button.
 
-# TODOs
+## TODOs
 
-## Configure
+### Configure
 - Kitty
 	- Go through config file
 	- Check out [kittens](https://sw.kovidgoyal.net/kitty/kittens/custom/?highlight=split%20line#)
