@@ -154,15 +154,6 @@ TODO: Install Better Discord
 
 # Gnome
 
-Get some wallpapers
-
-```
-git clone https://github.com/catppuccin/wallpapers Pictures/Wallpapers/catppuccin
-```
-
-TODO: Find a way to load `~/Documents/dynamic_wallpapers.xml` into Dynamic Wallpaper Editor from 
-CLI
-
 ## Syncthing
 
 systemctl enable --user syncthing
