@@ -7,21 +7,25 @@ function M.configure(use, keymap)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+    -- Keyboard shortcuts
     keymap('n', 'gD', vim.lsp.buf.declaration, bufopts)
     keymap('n', 'gd', vim.lsp.buf.definition, bufopts)
-    keymap('n', 'K', vim.lsp.buf.hover, bufopts)
-    keymap('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    keymap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    keymap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    keymap('n', '<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    keymap('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-    keymap('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-    keymap('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
     keymap('n', 'gr', vim.lsp.buf.references, bufopts)
-    keymap('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    keymap('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    keymap('n', 'K', vim.lsp.buf.hover, bufopts)
+    keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+    -- s namespace: LSP
+    -- keymap('n', '<leader>swa', vim.lsp.buf.add_workspace_folder, bufopts)
+    -- keymap('n', '<leader>swr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    -- keymap('n', '<leader>swl', function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, bufopts)
+    keymap('n', '<leader>sd', vim.lsp.buf.type_definition, bufopts)
+    keymap('n', '<leader>sr', vim.lsp.buf.rename, bufopts)
+    keymap('n', '<leader>sc', vim.lsp.buf.code_action, bufopts)
+    keymap('n', '<leader>sf', vim.lsp.buf.formatting, bufopts)
   end
 
   use {
@@ -42,7 +46,6 @@ function M.configure(use, keymap)
         'sqlls',
         'tailwindcss',
         'tsserver',
-        'typeprof',
         'vimls',
         'volar',
         'yamlls',
@@ -76,17 +79,17 @@ function M.configure(use, keymap)
           },
         },
       })
-
-      -- Set up pre-save call to eslint
-      vim.api.nvim_create_autocmd(
-        { 'BufWritePre' },
-        {
-          pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-          command = 'EslintFixAll'
-        }
-      )
     end
   }
+
+  vim.api.nvim_create_autocmd(
+    'BufWritePre',
+    {
+      callback = function()
+        vim.lsp.buf.formatting()
+      end
+    }
+  )
 
   local opts = { noremap = true, silent = true }
 

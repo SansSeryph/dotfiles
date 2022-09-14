@@ -62,3 +62,4 @@ set.updatetime = 500
 set.redrawtime = 5000
 global.python3_host_prog = '~/.asdf/shims/python3'
 window.foldmethod = 'syntax'
+set.foldlevel = 99
