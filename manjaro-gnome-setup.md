@@ -43,6 +43,7 @@ pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 ```
 
 ## Dotfiles
+TODO: See if there's a way to install dotdrop via AUR
 
 ```
 mkdir -p ~/Workspace
@@ -66,7 +67,7 @@ If needed, create a new entry for the device in `config.yaml` and then run:
 ```
 pikaur --sync --needed --noconfirm asdf-vm bash-completion unzip
 
-chsh --shell /usr/bin/fish $(whoami)
+chsh --shell $(which fish) $(whoami)
 fish
 
 set --erase EDITOR
@@ -91,7 +92,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ### Node
 
 ```
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin add nodejs
 asdf install nodejs latest
 asdf global nodejs latest
 asdf reshim nodejs latest
@@ -100,8 +101,7 @@ asdf reshim nodejs latest
 ### Ruby
 
 ```
-pikaur --sync --needed --noconfirm base-devel libffi libyaml openssl zlib
-asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby latest
 asdf reshim ruby latest
