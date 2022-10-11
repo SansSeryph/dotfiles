@@ -52,7 +52,7 @@ dotfiles:
     src: config/btop
     dst: ~/.config/btop
 profiles:
-  terra:
+  manjaro:
     dotfiles:
     - d_fish
     - d_nvim
@@ -65,8 +65,7 @@ profiles:
     - f_default-python-packages
     - f_tmux.conf
     - f_gitconfig
-    - f_dynamic_wallpapers.xml
-  Locke:
+  osx:
     dotfiles:
     - d_fish
     - d_nvim
