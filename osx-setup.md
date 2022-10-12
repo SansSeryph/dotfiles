@@ -18,8 +18,10 @@ brew tap homebrew/cask-fonts
 brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.git
 
 brew install gh tldr quick-lint-js fd ripgrep tree neovim exa bat tmux fish \
-             ctags openssl readline btop git dotdrop asdf lua-language-server
-brew install --cask kitty font-fira-code obsidian
+             ctags openssl readline btop git dotdrop asdf lua-language-server \
+             koekeishiya/formulae/yabai
+brew install --cask kitty font-fira-code obsidian slack
+brew services start yabai
 ```
 
 ## Configure Everything
