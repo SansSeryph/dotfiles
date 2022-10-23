@@ -38,8 +38,8 @@ pikaur --remove --recursive --noconfirm firefox-gnome-theme-maia
 pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop tmux keepassxc betterdiscord-installer \
 	betterdiscordctl discord fish kitty htop neovim-qt ripgrep \
-	ttf-fira-code spotify quick-lint-js-git fd tree github-cli ctags \
-	syncthing steam zoom obsidian
+	spotify quick-lint-js-git fd tree github-cli ctags syncthing steam \
+	zoom obsidian slack-desktop nerd-fonts-fira-code
 ```
 
 ## Dotfiles
