@@ -57,6 +57,14 @@ asdf plugin add nodejs
 asdf install nodejs latest
 asdf global nodejs latest
 asdf reshim nodejs latest
+
+npm install --global neovim @ansible/ansible-language-server \
+	bash-language-server vscode-langservers-extracted \
+	cssmodules-language-server diagnostic-languageserver \
+	dockerfile-language-server-nodejs sql-language-server stylelint-lsp \
+	@tailwindcss/language-server typescript-language-server \
+	vim-language-server @volar/vue-language-server yaml-language-server \
+	remark-language-server
 ```
 
 ### Ruby

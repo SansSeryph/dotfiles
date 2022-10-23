@@ -39,7 +39,7 @@ pikaur --sync --needed --noconfirm tldr libreoffice-still authy exa bat neovim \
 	libappindicator-gtk3 signal-desktop tmux keepassxc betterdiscord-installer \
 	betterdiscordctl discord fish kitty htop neovim-qt ripgrep \
 	spotify quick-lint-js-git fd tree github-cli ctags syncthing steam \
-	zoom obsidian slack-desktop nerd-fonts-fira-code
+	zoom obsidian slack-desktop nerd-fonts-fira-code lua-language-server
 ```
 
 ## Dotfiles
@@ -96,6 +96,14 @@ asdf plugin add nodejs
 asdf install nodejs latest
 asdf global nodejs latest
 asdf reshim nodejs latest
+
+npm install --global neovim @ansible/ansible-language-server \
+	bash-language-server vscode-langservers-extracted \
+	cssmodules-language-server diagnostic-languageserver \
+	dockerfile-language-server-nodejs sql-language-server stylelint-lsp \
+	@tailwindcss/language-server typescript-language-server \
+	vim-language-server @volar/vue-language-server yaml-language-server \
+	remark-language-server
 ```
 
 ### Ruby
@@ -131,22 +139,6 @@ cpanm -n Neovim::Ext
 cpanm -n App::cpanminus
 
 asdf reshim perl latest
-```
-
-### Lua
-
-```
-mkdir -p ~/Workspace/builds/
-cd ~/Workspace/builds/
-pikaur --sync --needed --noconfirm ninja
-git clone  --depth=1 https://github.com/sumneko/lua-language-server
-cd lua-language-server
-git submodule update --depth 1 --init --recursive
-cd 3rd/luamake
-./compile/install.sh
-cd ../..
-./3rd/luamake/luamake rebuild
-ln -sf ./bin/lua-language-server ~/.local/bin/
 ```
 
 ## Discord

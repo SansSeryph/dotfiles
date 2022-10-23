@@ -25,7 +25,7 @@ function M.configure(use, keymap)
     keymap('n', '<leader>sd', vim.lsp.buf.type_definition, bufopts)
     keymap('n', '<leader>sr', vim.lsp.buf.rename, bufopts)
     keymap('n', '<leader>sc', vim.lsp.buf.code_action, bufopts)
-    keymap('n', '<leader>sf', vim.lsp.buf.formatting, bufopts)
+    keymap('n', '<leader>sf', vim.lsp.buf.format({ async = true }), bufopts)
   end
 
   use {
@@ -36,7 +36,6 @@ function M.configure(use, keymap)
         'bashls',
         'cssls',
         'cssmodules_ls',
-        'diagnosticls',
         'dockerls',
         'eslint',
         'html',
@@ -86,7 +85,7 @@ function M.configure(use, keymap)
     'BufWritePre',
     {
       callback = function()
-        vim.lsp.buf.formatting()
+        vim.lsp.buf.format({ async = true })
       end
     }
   )
