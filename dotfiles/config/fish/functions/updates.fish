@@ -16,10 +16,9 @@ function updates
   gem update && gem cleanup
 
   pip install --upgrade pip
-  pip list --user --outdated --format=freeze \
-    | grep -v '^\-e' \
-    | cut -d = -f 1 \
-    | xargs -n1 pip install --upgrade --progress-bar pretty 2> /dev/null
+  for i in (pip list --user --outdated | awk 'NR > 2 {print $1}')
+    pip install --user --upgrade --progress-bar pretty $i
+  end
 
   nvim +PackerSync +q
 end
