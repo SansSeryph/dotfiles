@@ -14,3 +14,9 @@ if status is-interactive
     set --append PATH $bin_dir
   end
 end
+
+# This is an ignored file that gets used to set up things that are needed for
+# specific devices
+if [ -e ~/.config/fish/device_specific.fish ]
+  source ~/.config/fish/device_specific.fish
+end

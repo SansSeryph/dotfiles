@@ -1,3 +1,4 @@
 packer_compiled.lua
 .luarc.json
+dotfiles/config/fish/device_specific.fish
 dotfiles/config/fish/fish_variables
