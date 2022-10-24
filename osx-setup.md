@@ -19,9 +19,8 @@ brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.gi
 
 brew install gh tldr quick-lint-js fd ripgrep tree neovim exa bat tmux fish \
              ctags openssl readline btop git dotdrop asdf lua-language-server \
-             koekeishiya/formulae/yabai
-brew install --cask kitty font-fira-code obsidian slack
-brew services start yabai
+             ripgrep fzf
+brew install --cask kitty font-fira-code obsidian slack firefox
 ```
 
 ## Configure Everything
@@ -98,3 +97,7 @@ cpanm -n App::cpanminus
 
 asdf reshim perl latest
 ```
+
+## Final Steps
+
+- Create an SSH key and add it to Github
