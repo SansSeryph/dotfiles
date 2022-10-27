@@ -18,8 +18,8 @@ brew tap homebrew/cask-fonts
 brew tap quick-lint/quick-lint-js https://github.com/quick-lint/quick-lint-js.git
 
 brew install gh tldr quick-lint-js fd ripgrep tree neovim exa bat tmux fish \
-             ctags openssl readline btop git dotdrop asdf lua-language-server \
-             ripgrep fzf
+	ctags openssl readline btop git dotdrop asdf lua-language-server \
+	ripgrep fzf
 brew install --cask kitty font-fira-code-nerd-font obsidian slack firefox
 brew install --cask kitty font-fira-code-nerd-font obsidian slack firefox \
 	postman
