@@ -17,7 +17,7 @@ function updates
 
   pip install --upgrade pip
   for i in (pip list --user --outdated | awk 'NR > 2 {print $1}')
-    pip install --user --upgrade --progress-bar pretty $i
+    pip install --user --upgrade $i
   end
 
   nvim +PackerSync +q
