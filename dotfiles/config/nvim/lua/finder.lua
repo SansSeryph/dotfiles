@@ -5,6 +5,7 @@ function M.configure(use, keymap)
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
+      { 'BurntSushi/ripgrep' },
       { 'kyazdani42/nvim-web-devicons' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-node-modules.nvim' },
@@ -52,7 +53,9 @@ function M.configure(use, keymap)
   local leader_maps = {
     fe = 'emoji()',
     ff = 'find_files({ hidden = true, no_ignore=true, follow=true, previewer=false })',
-    fg = 'grep_string({ search="" })',
+    fg = 'grep_string()',
+    fl = 'live_grep()',
+    fr = 'resume()',
     fb = 'buffers()',
     ft = 'tags()',
     fh = 'help_tags()',
