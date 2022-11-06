@@ -51,6 +51,9 @@ dotfiles:
   d_btop:
     src: config/btop
     dst: ~/.config/btop
+  d_git_template:
+    src: git_template
+    dst: ~/.git_template
 profiles:
   manjaro:
     dotfiles:
@@ -78,3 +81,4 @@ profiles:
     - f_default-python-packages
     - f_tmux.conf
     - f_gitconfig
+    - d_git_template
