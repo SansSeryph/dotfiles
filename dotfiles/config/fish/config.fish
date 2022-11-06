@@ -2,9 +2,8 @@ if status is-interactive
   set --local os (uname -s)
 
   if [ $os = "Darwin" ]
-    set -x BREW_PREFIX (brew --prefix)
-    eval ($BREW_PREFIX/bin/brew shellenv)
-    source $BREW_PREFIX/opt/asdf/libexec/asdf.fish
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    source (brew --prefix)/opt/asdf/libexec/asdf.fish
   else if [ $os = "Linux" ]
     source /opt/asdf-vm/asdf.fish
   end
