@@ -6,11 +6,9 @@ function fish_prompt
   echo -n [(whoami)@(hostname)]
 
   # Git Info (if CWD has it)
-  if [ -d .git ]
-    set -l git_branch_name (git branch --show-current)
-    set_color -d brgreen
-    echo -n " ["$git_branch_name"]"
-  end
+  set -l git_branch_name (git branch --show-current 2> /dev/null)
+  set_color -d brgreen
+  echo -n " ["$git_branch_name"]"
 
   # PWD
   set_color -d bryellow
