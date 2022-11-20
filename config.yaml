@@ -45,9 +45,6 @@ dotfiles:
     src: gitconfig
     dst: ~/.gitconfig
     link: absolute
-  f_dynamic_wallpapers.xml:
-    src: Documents/dynamic_wallpapers.xml
-    dst: ~/Documents/dynamic_wallpapers.xml
   d_btop:
     src: config/btop
     dst: ~/.config/btop
