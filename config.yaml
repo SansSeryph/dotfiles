@@ -65,6 +65,7 @@ profiles:
     - f_default-python-packages
     - f_tmux.conf
     - f_gitconfig
+    - d_git_template
   osx:
     dotfiles:
     - d_fish
